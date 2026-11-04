@@ -1,0 +1,200 @@
+<script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+
+import type { GlucoseReading } from '~~/shared/domain/glucose/glucoseReading'
+import type { GlucoseReadingValidationCode, GlucoseReadingValidationErrors } from '~~/shared/domain/glucose/validateGlucoseReading'
+import type { Reminder, ReminderValidationCode, ReminderValidationErrors } from '~~/shared/domain/reminders/reminder'
+import type { ReminderOccurrence } from '~~/shared/domain/reminders/reminderOccurrence'
+import type { InsulinApplication } from '~~/shared/domain/insulin/insulinApplication'
+import type { InsulinApplicationValidationCode, InsulinApplicationValidationErrors } from '~~/shared/domain/insulin/validateInsulinApplication'
+
+const showGlucoseForm = ref(false)
+const showReminderForm = ref(false)
+const showInsulinForm = ref(false)
+const glucoseErrors = ref<Record<string, string>>({})
+const reminderErrors = ref<Record<string, string>>({})
+const insulinErrors = ref<Record<string, string>>({})
+const persistenceError = ref('')
+const reminderFeedback = ref('')
+const activeReminderNotice = ref('')
+let reminderRefreshTimer: ReturnType<typeof setInterval> | undefined
+const glucoseSubmitted = ref(false)
+const reminderSubmitted = ref(false)
+const insulinSubmitted = ref(false)
+const insulinLoading = ref(false)
+const remindersLoading = ref(false)
+const actingOnOccurrence = ref('')
+const timeZone = ref('UTC')
+const history = ref<GlucoseReading[]>([])
+const insulinHistory = ref<InsulinApplication[]>([])
+const reminders = ref<Reminder[]>([])
+const occurrences = ref<ReminderOccurrence[]>([])
+const glucoseForm = reactive({ value: '', date: '', time: '', context: '' })
+const reminderForm = reactive({ localTime: '', daysOfWeek: [] as number[] })
+const insulinForm = reactive({ type: 'basal', name: '', units: '', date: '', time: '' })
+
+const validationMessages: Record<GlucoseReadingValidationCode, string> = {
+  required: 'Informe este campo.', invalid: 'Informe um valor válido.', 'invalid-time-zone': 'O fuso horário do navegador não é válido.',
+  'nonexistent-local-time': 'Este horário não existe no fuso atual.', 'ambiguous-local-time': 'Este horário é ambíguo no fuso atual.'
+}
+const insulinValidationMessages: Record<InsulinApplicationValidationCode, string> = { required: 'Informe este campo.', invalid: 'Informe um valor válido.', 'invalid-time-zone': 'O fuso horário do navegador não é válido.', 'nonexistent-local-time': 'Este horário não existe no fuso atual.', 'ambiguous-local-time': 'Este horário é ambíguo no fuso atual.' }
+const reminderValidationMessages: Record<ReminderValidationCode, string> = {
+  required: 'Informe este campo.', invalid: 'Informe um valor válido.', 'invalid-time-zone': 'O fuso horário do navegador não é válido.'
+}
+const weekdayOptions = [
+  { value: 0, label: 'Domingo' }, { value: 1, label: 'Segunda' }, { value: 2, label: 'Terça' }, { value: 3, label: 'Quarta' },
+  { value: 4, label: 'Quinta' }, { value: 5, label: 'Sexta' }, { value: 6, label: 'Sábado' }
+]
+const pendingOccurrences = computed(() => occurrences.value.filter(({ status }) => ['scheduled', 'due', 'snoozed'].includes(status)))
+const dueOccurrences = computed(() => occurrences.value.filter(({ status }) => status === 'due'))
+const nextOccurrence = computed(() => pendingOccurrences.value[0])
+
+const setCurrentDateTime = () => {
+  const now = new Date()
+  glucoseForm.date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  glucoseForm.time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+  reminderForm.localTime = glucoseForm.time
+  insulinForm.date = glucoseForm.date
+  insulinForm.time = glucoseForm.time
+  reminderForm.daysOfWeek = [now.getDay()]
+}
+const toUiErrors = (domainErrors: GlucoseReadingValidationErrors) => Object.fromEntries(Object.entries(domainErrors).map(([field, code]) => [field === 'localDateTime' ? 'time' : field, validationMessages[code]]))
+const toInsulinUiErrors = (domainErrors: InsulinApplicationValidationErrors) => Object.fromEntries(Object.entries(domainErrors).map(([field, code]) => [field === 'localDateTime' ? 'time' : field, insulinValidationMessages[code]]))
+const formatInsulinOccurredAt = (application: InsulinApplication) => new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: application.timeZone }).format(new Date(application.occurredAt))
+const toReminderUiErrors = (domainErrors: ReminderValidationErrors) => Object.fromEntries(Object.entries(domainErrors).map(([field, code]) => [field, reminderValidationMessages[code]]))
+const formatOccurredAt = (reading: GlucoseReading) => new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: reading.timeZone }).format(new Date(reading.occurredAt))
+const formatOccurrence = (occurrence: ReminderOccurrence) => occurrence.nextActionAt ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: occurrence.timeZone }).format(new Date(occurrence.nextActionAt)) : 'Sem horário de ação'
+const contextLabels: Record<string, string> = { fasting: 'Em jejum', pre_meal: 'Antes da refeição', post_meal: 'Após a refeição', bedtime: 'Ao deitar', other: 'Outro' }
+
+const loadHistory = async () => {
+  try { history.value = await $fetch<GlucoseReading[]>('/api/glucose/readings') } catch { persistenceError.value = 'Não foi possível carregar os registros locais.' }
+}
+const loadInsulinHistory = async () => {
+  insulinLoading.value = true
+  try { insulinHistory.value = await $fetch<InsulinApplication[]>('/api/insulin/applications') }
+  catch { persistenceError.value = 'Não foi possível carregar as aplicações locais.' }
+  finally { insulinLoading.value = false }
+}
+const loadReminders = async () => {
+  remindersLoading.value = true
+  try {
+    const [savedReminders, savedOccurrences] = await Promise.all([
+      $fetch<Reminder[]>('/api/reminders'), $fetch<ReminderOccurrence[]>('/api/reminder-occurrences')
+    ])
+    reminders.value = savedReminders
+    occurrences.value = savedOccurrences
+    activeReminderNotice.value = dueOccurrences.value.length ? 'Há um lembrete de glicemia pendente.' : ''
+  } catch { persistenceError.value = 'Não foi possível carregar os lembretes locais.' } finally { remindersLoading.value = false }
+}
+const openGlucoseForm = () => { showGlucoseForm.value = true; glucoseSubmitted.value = false; glucoseErrors.value = {}; reminderFeedback.value = '' }
+const openInsulinForm = () => { showInsulinForm.value = true; insulinSubmitted.value = false; insulinErrors.value = {}; reminderFeedback.value = '' }
+const openReminderForm = () => { showReminderForm.value = true; reminderSubmitted.value = false; reminderErrors.value = {}; reminderFeedback.value = '' }
+
+const submitGlucose = async () => {
+  glucoseSubmitted.value = true; glucoseErrors.value = {}; persistenceError.value = ''
+  let result: { reading: GlucoseReading, completedOccurrenceId?: string }
+  try {
+    result = await $fetch<{ reading: GlucoseReading, completedOccurrenceId?: string }>('/api/glucose/readings', { method: 'POST', body: { ...glucoseForm, value: String(glucoseForm.value), timeZone: timeZone.value, context: glucoseForm.context || undefined } })
+  } catch (error: unknown) {
+    const response = error as { data?: { data?: { errors?: GlucoseReadingValidationErrors } } }
+    const validationErrors = response.data?.data?.errors
+    if (validationErrors) glucoseErrors.value = toUiErrors(validationErrors)
+    else persistenceError.value = 'Não foi possível salvar o registro local. Tente novamente.'
+    return
+  }
+  await Promise.all([loadHistory(), loadInsulinHistory(), loadReminders()]); showGlucoseForm.value = false
+  reminderFeedback.value = result.completedOccurrenceId ? 'Registro salvo e lembrete concluído automaticamente.' : 'Registro salvo neste ambiente local.'
+}
+const submitInsulin = async () => {
+  insulinSubmitted.value = true; insulinErrors.value = {}; persistenceError.value = ''; reminderFeedback.value = ''
+  insulinLoading.value = true
+  try {
+    await $fetch<InsulinApplication>('/api/insulin/applications', { method: 'POST', body: { ...insulinForm, units: String(insulinForm.units), timeZone: timeZone.value } })
+  } catch (error: unknown) {
+    const response = error as { data?: { data?: { errors?: InsulinApplicationValidationErrors } } }
+    const validationErrors = response.data?.data?.errors
+    if (validationErrors) insulinErrors.value = toInsulinUiErrors(validationErrors)
+    else persistenceError.value = 'Não foi possível salvar a aplicação local. Tente novamente.'
+    return
+  } finally { insulinLoading.value = false }
+  await loadInsulinHistory(); showInsulinForm.value = false; reminderFeedback.value = 'Aplicação registrada neste ambiente local.'
+}
+const submitReminder = async () => {
+  reminderSubmitted.value = true; reminderErrors.value = {}; persistenceError.value = ''; reminderFeedback.value = ''
+  try {
+    await $fetch<Reminder>('/api/reminders', { method: 'POST', body: { type: 'glucose-reading', localTime: reminderForm.localTime, daysOfWeek: reminderForm.daysOfWeek, timeZone: timeZone.value } })
+  } catch (error: unknown) {
+    const response = error as { data?: { data?: { errors?: ReminderValidationErrors } } }
+    const validationErrors = response.data?.data?.errors
+    if (validationErrors) reminderErrors.value = toReminderUiErrors(validationErrors)
+    else persistenceError.value = 'Não foi possível salvar o lembrete local. Tente novamente.'
+    return
+  }
+  await loadReminders(); showReminderForm.value = false; reminderFeedback.value = 'Lembrete criado e salvo neste ambiente local.'
+}
+const actOnOccurrence = async (occurrence: ReminderOccurrence, action: 'snooze' | 'ignore') => {
+  actingOnOccurrence.value = occurrence.id; persistenceError.value = ''; reminderFeedback.value = ''
+  try {
+    await $fetch(`/api/reminder-occurrences/${action}`, { method: 'POST', body: { id: occurrence.id } })
+    await loadReminders()
+    reminderFeedback.value = action === 'snooze' ? 'Lembrete adiado por 10 minutos.' : 'Lembrete ignorado explicitamente.'
+  } catch (error: unknown) {
+    const response = error as { data?: { message?: string } }
+    persistenceError.value = response.data?.message || 'Não foi possível atualizar o lembrete.'
+  } finally { actingOnOccurrence.value = '' }
+}
+
+const refreshWhenVisible = () => { if (!document.hidden) void loadReminders() }
+
+onMounted(async () => {
+  timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+  setCurrentDateTime()
+  await Promise.all([loadHistory(), loadInsulinHistory(), loadReminders()])
+  document.addEventListener('visibilitychange', refreshWhenVisible)
+  reminderRefreshTimer = setInterval(refreshWhenVisible, 60_000)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('visibilitychange', refreshWhenVisible)
+  if (reminderRefreshTimer) clearInterval(reminderRefreshTimer)
+})
+</script>
+
+<template>
+  <main id="hoje" class="app-shell">
+    <header class="app-header"><div><p class="eyebrow">TIA-BETE</p><h1>Hoje</h1></div><StatusIndicator tone="warning">Dados locais</StatusIndicator></header>
+
+    <AppCard class="day-summary"><p class="eyebrow">Resumo do dia</p><h2>Organize medições e registros</h2><p>Esta demonstração não usa dados clínicos reais. Tudo permanece somente neste ambiente local.</p><div class="button-row"><AppButton @click="openGlucoseForm">Registrar glicemia</AppButton><AppButton variant="secondary" @click="openReminderForm">Criar lembrete</AppButton><AppButton variant="secondary" @click="openInsulinForm">Registrar insulina</AppButton></div></AppCard>
+
+    <section v-if="activeReminderNotice" class="active-reminder-notice" role="status" aria-live="polite"><strong>Lembrete ativo</strong><span>{{ activeReminderNotice }}</span><AppButton @click="openGlucoseForm">Registrar agora</AppButton></section>
+
+    <section class="content-grid" aria-label="Resumo da sessão">
+      <AppCard><p class="eyebrow">Último registro</p><template v-if="history[0]"><h2>{{ history[0].glucoseMgDl }} mg/dL</h2><p>{{ formatOccurredAt(history[0]) }}<span v-if="history[0].context"> · {{ contextLabels[history[0].context] }}</span></p><StatusIndicator tone="warning">Local: permanece neste ambiente após recarregar.</StatusIndicator></template><template v-else><h2>Nenhum registro nesta sessão</h2><p>Use apenas dados de demonstração até existir armazenamento protegido.</p></template></AppCard>
+      <AppCard><p class="eyebrow">Próximo lembrete</p><template v-if="nextOccurrence"><h2>{{ nextOccurrence.status === 'due' ? 'Atenção agora' : 'Glicemia' }}</h2><p>Próxima ação: {{ formatOccurrence(nextOccurrence) }}</p><StatusIndicator :tone="nextOccurrence.status === 'due' ? 'warning' : 'neutral'">{{ nextOccurrence.status === 'snoozed' ? 'Adiado' : nextOccurrence.status === 'due' ? 'Pendente' : 'Agendado' }}</StatusIndicator></template><template v-else><h2>Nenhum lembrete pendente</h2><p>Crie um lembrete para acompanhar as próximas medições.</p></template></AppCard>
+    </section>
+
+    <AppCard v-if="history.length" class="history-card"><p class="eyebrow">Histórico desta sessão</p><ol class="history-list"><li v-for="reading in history" :key="reading.id"><strong>{{ reading.glucoseMgDl }} mg/dL</strong><span>{{ formatOccurredAt(reading) }}</span></li></ol></AppCard>
+
+    <FoodMealsSection />
+
+    <section class="insulin-section" aria-labelledby="insulin-history-title"><div class="section-heading"><div><p class="eyebrow">Aplicações manuais</p><h2 id="insulin-history-title">Histórico de insulina</h2></div><AppButton variant="secondary" @click="openInsulinForm">Registrar insulina</AppButton></div><p v-if="insulinLoading" role="status">Atualizando aplicações locais…</p><AppCard v-if="!insulinLoading && !insulinHistory.length"><h2>Nenhuma aplicação registrada</h2><p>Registre somente informações declaradas manualmente.</p></AppCard><AppCard v-for="application in insulinHistory" :key="application.id" class="insulin-card"><p class="eyebrow">{{ application.type === 'basal' ? 'Basal' : 'Rápida' }}</p><h2>{{ application.name }} · {{ application.units }} unidades</h2><p>Aplicada em {{ formatInsulinOccurredAt(application) }}</p><details><summary>Ver detalhes</summary><p>Criado em {{ new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short', timeZone: application.timeZone }).format(new Date(application.createdAt)) }}</p></details></AppCard></section>
+
+    <section id="lembretes" class="reminders-section" aria-labelledby="reminders-title">
+      <div class="section-heading"><div><p class="eyebrow">Lembretes locais</p><h2 id="reminders-title">Lembretes de glicemia</h2></div><AppButton variant="secondary" @click="openReminderForm">Novo lembrete</AppButton></div>
+      <p v-if="remindersLoading" role="status">Atualizando lembretes locais…</p>
+      <StatusIndicator v-if="reminderFeedback" tone="success">{{ reminderFeedback }}</StatusIndicator>
+      <AppCard v-for="occurrence in pendingOccurrences" :key="occurrence.id" class="reminder-card"><p class="eyebrow">{{ occurrence.status === 'due' ? 'Pendente agora' : occurrence.status === 'snoozed' ? 'Adiado' : 'Próximo horário' }}</p><h2>Medir glicemia</h2><p>Próxima ação: {{ formatOccurrence(occurrence) }}</p><div v-if="occurrence.status === 'due'" class="button-row"><AppButton @click="openGlucoseForm">Registrar</AppButton><AppButton :disabled="actingOnOccurrence === occurrence.id" @click="actOnOccurrence(occurrence, 'snooze')">Adiar 10 min</AppButton><AppButton variant="secondary" :disabled="actingOnOccurrence === occurrence.id" @click="actOnOccurrence(occurrence, 'ignore')">Ignorar</AppButton></div></AppCard>
+      <AppCard v-if="!remindersLoading && !pendingOccurrences.length"><h2>Nenhum lembrete pendente</h2><p>O formulário abaixo cria lembretes para hoje e amanhã no fuso deste navegador.</p></AppCard>
+      <p v-if="reminders.length" class="reminder-count">{{ reminders.length }} lembrete{{ reminders.length === 1 ? '' : 's' }} salvo{{ reminders.length === 1 ? '' : 's' }} localmente.</p>
+    </section>
+
+    <StatusIndicator v-if="persistenceError" tone="warning">{{ persistenceError }}</StatusIndicator>
+
+    <section v-if="showGlucoseForm" class="form-panel" aria-labelledby="glucose-form-title"><div class="form-panel__heading"><div><p class="eyebrow">Registro local</p><h2 id="glucose-form-title">Registrar glicemia</h2></div><AppButton variant="secondary" @click="showGlucoseForm = false">Cancelar</AppButton></div><StatusIndicator tone="warning">Use somente dados de demonstração. O registro será salvo apenas neste ambiente local.</StatusIndicator><form novalidate @submit.prevent="submitGlucose"><AppInput id="glucose-value" v-model="glucoseForm.value" label="Valor" type="number" inputmode="decimal" min="0" placeholder="Ex.: 120" :error="glucoseSubmitted ? glucoseErrors.value : ''" hint="Em mg/dL" /><div class="form-grid"><AppInput id="glucose-date" v-model="glucoseForm.date" label="Data" type="date" :error="glucoseSubmitted ? glucoseErrors.date : ''" /><AppInput id="glucose-time" v-model="glucoseForm.time" label="Horário" type="time" :error="glucoseSubmitted ? glucoseErrors.time : ''" /></div><div class="app-field"><label for="glucose-context">Contexto opcional</label><select id="glucose-context" v-model="glucoseForm.context"><option value="">Não informado</option><option value="fasting">Em jejum</option><option value="pre_meal">Antes da refeição</option><option value="post_meal">Após a refeição</option><option value="bedtime">Ao deitar</option><option value="other">Outro</option></select></div><AppButton type="submit">Salvar registro local</AppButton></form></section>
+
+    <section v-if="showInsulinForm" class="form-panel" aria-labelledby="insulin-form-title"><div class="form-panel__heading"><div><p class="eyebrow">Registro manual</p><h2 id="insulin-form-title">Registrar insulina</h2></div><AppButton variant="secondary" @click="showInsulinForm = false">Cancelar</AppButton></div><StatusIndicator tone="warning">Registro declarativo: não calcula nem recomenda doses.</StatusIndicator><form novalidate @submit.prevent="submitInsulin"><div class="app-field"><label for="insulin-type">Tipo</label><select id="insulin-type" v-model="insulinForm.type" :aria-invalid="Boolean(insulinSubmitted && insulinErrors.type)"><option value="basal">Basal</option><option value="rapid">Rápida</option></select><p v-if="insulinSubmitted && insulinErrors.type" class="app-field__help app-field__help--error">{{ insulinErrors.type }}</p></div><AppInput id="insulin-name" v-model="insulinForm.name" label="Nome da insulina" :error="insulinSubmitted ? insulinErrors.name : ''" placeholder="Ex.: Insulina sintética" /><AppInput id="insulin-units" v-model="insulinForm.units" label="Quantidade" type="number" inputmode="decimal" min="0" step="any" hint="Em unidades" :error="insulinSubmitted ? insulinErrors.units : ''" /><div class="form-grid"><AppInput id="insulin-date" v-model="insulinForm.date" label="Data efetiva" type="date" :error="insulinSubmitted ? insulinErrors.date : ''" /><AppInput id="insulin-time" v-model="insulinForm.time" label="Horário efetivo" type="time" :error="insulinSubmitted ? insulinErrors.time : ''" /></div><AppButton type="submit" :disabled="insulinLoading">{{ insulinLoading ? 'Salvando…' : 'Salvar aplicação local' }}</AppButton></form></section>
+
+    <section v-if="showReminderForm" class="form-panel" aria-labelledby="reminder-form-title"><div class="form-panel__heading"><div><p class="eyebrow">Lembrete local</p><h2 id="reminder-form-title">Criar lembrete de glicemia</h2></div><AppButton variant="secondary" @click="showReminderForm = false">Cancelar</AppButton></div><form novalidate @submit.prevent="submitReminder"><AppInput id="reminder-time" v-model="reminderForm.localTime" label="Horário" type="time" :error="reminderSubmitted ? reminderErrors.localTime : ''" /><fieldset class="weekday-fieldset" :aria-describedby="reminderErrors.daysOfWeek ? 'reminder-days-help' : undefined"><legend>Dias da semana</legend><label v-for="day in weekdayOptions" :key="day.value" class="weekday-option"><input v-model="reminderForm.daysOfWeek" type="checkbox" :value="day.value"><span>{{ day.label }}</span></label></fieldset><p v-if="reminderSubmitted && reminderErrors.daysOfWeek" id="reminder-days-help" class="app-field__help app-field__help--error">{{ reminderErrors.daysOfWeek }}</p><AppButton type="submit">Criar lembrete</AppButton></form></section>
+  </main>
+  <AppBottomNavigation />
+</template>
