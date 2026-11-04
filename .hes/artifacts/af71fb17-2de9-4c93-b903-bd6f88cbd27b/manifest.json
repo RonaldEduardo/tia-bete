@@ -1,0 +1,82 @@
+{
+  "applied": [
+    "app/app.vue",
+    "app/assets/css/main.css"
+  ],
+  "appliedAt": "2026-11-04T18:46:38.096811+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "af71fb17-2de9-4c93-b903-bd6f88cbd27b",
+    "reference": "user-approved-insulin-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "92961d7440a68f24eb0b92e33a9084fa3e5dcd949736d105355e6bf0360ba416",
+      "contentSha256": "aadfe3732e36e37f4d5a471f5be6add3d2c6ad0ab49c371ba1dc3aca1de7f36c",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "a90f46c3cd9010d7756ce3eafdb978c542b4717f1695a4734415c95ceee83da0",
+      "contentSha256": "ff9678ada2230d6425c113ffa08cc6fb96311b0caf74b2a31519784bd22a127e",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/assets/css/main.css",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    }
+  ],
+  "createdAt": "2026-11-04T18:46:29.044107+00:00",
+  "id": "af71fb17-2de9-4c93-b903-bd6f88cbd27b",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:46:37.973723+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "app/app.vue",
+      "app/assets/css/main.css"
+    ]
+  },
+  "state": "APPLIED"
+}

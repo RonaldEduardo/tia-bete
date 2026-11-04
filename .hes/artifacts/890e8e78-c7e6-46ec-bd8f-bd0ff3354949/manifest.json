@@ -1,0 +1,132 @@
+{
+  "applied": [
+    "server/api/reminders/index.post.ts",
+    "server/api/reminders/index.get.ts",
+    "server/api/reminder-occurrences/index.get.ts",
+    "server/api/reminder-occurrences/snooze.post.ts"
+  ],
+  "appliedAt": "2026-11-04T18:22:28.754339+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "890e8e78-c7e6-46ec-bd8f-bd0ff3354949",
+    "reference": "user-approved-reminder-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "7a34b0d957ba3b31089250b5d9f77d76ff3c24b6558e393531301d78c9b59c65",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/reminders/index.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "3f2813bfaa11308579a6fcabecf0cc8edecc4f7df96a2f72c5c70847d2f1cfbc",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/reminders/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "556abf4a5cf78dc039cb0afc19831e5de21781b988ccf01161e1b4ad70fff1a0",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/reminder-occurrences/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "f20f03ef957cd23414bc8523caef4cc6b6796f340a1b1f922459b8f76633a5f7",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/reminder-occurrences/snooze.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    }
+  ],
+  "createdAt": "2026-11-04T18:21:40.117071+00:00",
+  "id": "890e8e78-c7e6-46ec-bd8f-bd0ff3354949",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:22:09.293610+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "server/api/reminders/index.post.ts",
+      "server/api/reminders/index.get.ts",
+      "server/api/reminder-occurrences/index.get.ts",
+      "server/api/reminder-occurrences/snooze.post.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

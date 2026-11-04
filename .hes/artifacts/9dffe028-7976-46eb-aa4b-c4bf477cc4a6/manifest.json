@@ -1,0 +1,84 @@
+{
+  "applied": [
+    "contracts/glucose-recording.md",
+    "harness/traceability-matrix.md"
+  ],
+  "appliedAt": "2026-11-04T14:34:13.294207+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "9dffe028-7976-46eb-aa4b-c4bf477cc4a6",
+    "reference": "user-approved-glu-rec-001-evidence-update-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "9e0956ae09a958f748796096e5fe71dc5382931dfa59896c0a666de5aa8dff8a",
+      "contentSha256": "92ed8039f0230739ab02e8959ad9d37dc68bc8002103eb7a506080a7d2841f6d",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "contracts/glucose-recording.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "harness/traceability-matrix.md",
+          "tests/unit/glucose/validateGlucoseReading.test.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts"
+        ],
+        "protectedBy": {
+          "risk": "contract delivery state must reflect executed evidence without claiming VERIFIED"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "6c5ff7e65e3ff1c518c0382efb39b218f522408ee001507d3cfccbcfa29439db",
+      "contentSha256": "0498f871e1f9cafd8a085a7d963552452b553c917368beaef21d049f2590d4f5",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "harness/traceability-matrix.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "harness/traceability-matrix.md",
+          "tests/unit/glucose/validateGlucoseReading.test.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts"
+        ],
+        "protectedBy": {
+          "risk": "contract delivery state must reflect executed evidence without claiming VERIFIED"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    }
+  ],
+  "createdAt": "2026-11-04T14:34:06.946085+00:00",
+  "id": "9dffe028-7976-46eb-aa4b-c4bf477cc4a6",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:34:13.229621+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "contracts/glucose-recording.md",
+      "harness/traceability-matrix.md"
+    ]
+  },
+  "state": "APPLIED"
+}

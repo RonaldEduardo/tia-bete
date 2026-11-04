@@ -1,0 +1,118 @@
+<script setup lang="ts">
+import { onMounted, reactive, ref } from 'vue'
+
+import { validateGlucoseReading, type GlucoseReadingErrors } from '~~/shared/domain/glucose/validateGlucoseReading'
+
+const showForm = ref(false)
+const errors = ref<GlucoseReadingErrors>({})
+const submitted = ref(false)
+const form = reactive({ value: '', date: '', time: '', context: '' })
+const temporaryRecord = ref<{ value: string; date: string; time: string; context: string } | null>(null)
+
+const setCurrentDateTime = () => {
+  const now = new Date()
+  form.date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  form.time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+}
+
+const openForm = () => {
+  showForm.value = true
+  submitted.value = false
+  errors.value = {}
+}
+
+const submit = () => {
+  errors.value = validateGlucoseReading(form)
+  submitted.value = true
+
+  if (Object.keys(errors.value).length) return
+
+  temporaryRecord.value = { ...form }
+  showForm.value = false
+}
+
+onMounted(setCurrentDateTime)
+</script>
+
+<template>
+  <main id="hoje" class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">TIA-BETE</p>
+        <h1>Hoje</h1>
+      </div>
+      <StatusIndicator tone="warning">Sessão local</StatusIndicator>
+    </header>
+
+    <AppCard class="day-summary">
+      <p class="eyebrow">Resumo do dia</p>
+      <h2>Comece com um registro</h2>
+      <p>Esta demonstração não usa dados clínicos reais e não salva informações.</p>
+      <AppButton @click="openForm">Registrar glicemia</AppButton>
+    </AppCard>
+
+    <section class="content-grid" aria-label="Resumo da sessão">
+      <AppCard>
+        <p class="eyebrow">Último registro</p>
+        <template v-if="temporaryRecord">
+          <h2>{{ temporaryRecord.value }} mg/dL</h2>
+          <p>{{ temporaryRecord.date }} às {{ temporaryRecord.time }}<span v-if="temporaryRecord.context"> · {{ temporaryRecord.context }}</span></p>
+          <StatusIndicator tone="warning">Temporário: será perdido ao recarregar.</StatusIndicator>
+        </template>
+        <template v-else>
+          <h2>Nenhum registro nesta sessão</h2>
+          <p>Use apenas dados de demonstração até existir armazenamento protegido.</p>
+        </template>
+      </AppCard>
+
+      <AppCard>
+        <p class="eyebrow">Próximo lembrete</p>
+        <h2>Nenhum lembrete agendado</h2>
+        <p>Lembretes serão desenvolvidos e testados localmente em outro incremento.</p>
+      </AppCard>
+    </section>
+
+    <section v-if="showForm" class="form-panel" aria-labelledby="glucose-form-title">
+      <div class="form-panel__heading">
+        <div>
+          <p class="eyebrow">Registro temporário</p>
+          <h2 id="glucose-form-title">Registrar glicemia</h2>
+        </div>
+        <AppButton variant="secondary" @click="showForm = false">Cancelar</AppButton>
+      </div>
+
+      <StatusIndicator tone="warning">Use somente dados de demonstração. Nada será salvo nesta sessão.</StatusIndicator>
+
+      <form novalidate @submit.prevent="submit">
+        <AppInput
+          id="glucose-value"
+          v-model="form.value"
+          label="Valor"
+          type="number"
+          inputmode="decimal"
+          min="0"
+          placeholder="Ex.: 120"
+          :error="submitted ? errors.value : ''"
+          hint="Em mg/dL"
+        />
+        <div class="form-grid">
+          <AppInput id="glucose-date" v-model="form.date" label="Data" type="date" :error="submitted ? errors.date : ''" />
+          <AppInput id="glucose-time" v-model="form.time" label="Horário" type="time" :error="submitted ? errors.time : ''" />
+        </div>
+        <div class="app-field">
+          <label for="glucose-context">Contexto opcional</label>
+          <select id="glucose-context" v-model="form.context">
+            <option value="">Não informado</option>
+            <option value="Em jejum">Em jejum</option>
+            <option value="Antes da refeição">Antes da refeição</option>
+            <option value="Após a refeição">Após a refeição</option>
+            <option value="Ao deitar">Ao deitar</option>
+          </select>
+        </div>
+        <AppButton type="submit">Validar registro temporário</AppButton>
+      </form>
+    </section>
+  </main>
+
+  <AppBottomNavigation />
+</template>

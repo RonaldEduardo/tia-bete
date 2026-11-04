@@ -1,0 +1,8 @@
+<template>
+  <nav class="bottom-navigation" aria-label="Navegação principal">
+    <a href="#hoje" aria-current="page">Hoje</a>
+    <span aria-disabled="true">Histórico</span>
+    <span aria-disabled="true">Lembretes</span>
+    <span aria-disabled="true">Ajustes</span>
+  </nav>
+</template>

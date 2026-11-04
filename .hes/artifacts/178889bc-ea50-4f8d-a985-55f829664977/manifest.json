@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "nuxt.config.ts"
+  ],
+  "appliedAt": "2026-11-04T14:09:14.756701+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "178889bc-ea50-4f8d-a985-55f829664977",
+    "reference": "user-approved-local-first-2026-11-04-config-correction",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "f4f2b4ebfccd00c48481585ee5d980c6bfc8011f3e3a15e4090040325df5d09b",
+      "contentSha256": "80e4d35dd9a3eacdb47b0c53ab3f50438c154c3ae6328b08da580d9d33d92cbf",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "nuxt.config.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "nuxt.config.ts",
+          "app/assets/css/main.css",
+          "finding:BUILD_FAILURE:nuxt.config.ts"
+        ],
+        "protectedBy": {
+          "risk": "Nuxt must resolve the global design token stylesheet"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T14:09:08.923073+00:00",
+  "id": "178889bc-ea50-4f8d-a985-55f829664977",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:09:14.703609+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "nuxt.config.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

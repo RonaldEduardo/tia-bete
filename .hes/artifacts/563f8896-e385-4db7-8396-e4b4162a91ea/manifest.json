@@ -1,0 +1,99 @@
+{
+  "applied": [
+    "server/api/foods/index.get.ts",
+    "server/api/meals/index.get.ts",
+    "server/api/meals/[id].get.ts"
+  ],
+  "appliedAt": "2026-11-04T19:13:08.193491+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "563f8896-e385-4db7-8396-e4b4162a91ea",
+    "reference": "food-001-get-handlers-authorized",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "46eaa584e9f6aed48925892ff33b21bdc5a8b4f39400107a260565496b987b1b",
+      "contentSha256": "71f161ed2c665f6381f484701a2d114dd5a7fea8add9edea519e48aaea9d20bb",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/foods/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck: repository factory returns Promise"
+        ],
+        "protectedBy": {
+          "contract": "No HTTP/domain/persistence change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "d756e0d5359a6ff47acef2720f5df3182eccf68f738d1c534c14eb69ccdbc438",
+      "contentSha256": "fef3e69fd8bb61232a909365716f9873048bf9a3987841f177b4cce75b200a9c",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/meals/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck: repository factory returns Promise"
+        ],
+        "protectedBy": {
+          "contract": "No HTTP/domain/persistence change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "7e7cbe0b95c650306f461f8d67b8613634a387ed99990e979c78f5bd497d7d40",
+      "contentSha256": "caee78cac02eb4c81660f059e5e5bcda3282250cebe5563b05fc555774fb96ba",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/meals/[id].get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck: repository factory returns Promise"
+        ],
+        "protectedBy": {
+          "contract": "No HTTP/domain/persistence change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    }
+  ],
+  "createdAt": "2026-11-04T19:13:01.647037+00:00",
+  "id": "563f8896-e385-4db7-8396-e4b4162a91ea",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T19:13:08.139488+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "server/api/foods/index.get.ts",
+      "server/api/meals/index.get.ts",
+      "server/api/meals/[[]id].get.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "tests/e2e/glucose.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T17:19:42.117135+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "8a7ee3d6-f9ef-4855-9e6b-594b4c5da3be",
+    "reference": "user-authorization-continue-e2e-validation-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "ac0fd3c8881914c2c38aa7461902757df822f0d28c1ad1ba8bc928187fc4023c",
+      "contentSha256": "c6e5fa459ff10e89f7ea696cbf5c7afdbb3733369dd83bd46cb68ebd9c25bb8c",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/glucose.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tests/e2e/glucose.spec.ts",
+          "app/app.vue",
+          "Playwright execution 2026-11-04: form unavailable before hydration; controlled browser reproduction confirmed it after GET /api/glucose/readings"
+        ],
+        "protectedBy": {
+          "risk": "prevent false negative caused by interaction before Vue hydration"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T17:19:35.590316+00:00",
+  "id": "8a7ee3d6-f9ef-4855-9e6b-594b4c5da3be",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T17:19:42.063258+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/e2e/glucose.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "tests/unit/glucose/glucoseUseCases.test.ts"
+  ],
+  "appliedAt": "2026-11-04T14:33:18.341758+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "11e53ca7-8957-4879-820a-7ef465992051",
+    "reference": "user-approved-glu-rec-001-test-correction-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "f5b5f9d01b1e38b6012c001cd4b2ca8b589c332773af74948c32a2f4d184c07f",
+      "contentSha256": "23a00f997e36d2e773dcdb78f417aff10bd788e0a93972b72f420d403363f57b",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/unit/glucose/glucoseUseCases.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "finding:HARNESS_DEFECT:tests/unit/glucose/glucoseUseCases.test.ts"
+        ],
+        "protectedBy": {
+          "risk": "GLU-REC-001 deterministic ordering test must use distinct IDs"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T14:33:08.354333+00:00",
+  "id": "11e53ca7-8957-4879-820a-7ef465992051",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:33:18.281880+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/unit/glucose/glucoseUseCases.test.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

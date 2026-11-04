@@ -1,0 +1,358 @@
+{
+  "applied": [
+    "shared/domain/insulin/validateInsulinApplication.ts",
+    "shared/domain/insulin/insulinApplication.ts",
+    "shared/application/insulin/insulinApplicationRepository.ts",
+    "shared/application/insulin/recordInsulinApplication.ts",
+    "shared/application/insulin/listInsulinHistory.ts",
+    "shared/infrastructure/insulin/memoryInsulinApplicationRepository.ts",
+    "server/infrastructure/insulin/migrations/004_create_insulin_applications.sql",
+    "server/infrastructure/insulin/sqliteInsulinApplicationRepository.ts",
+    "server/utils/insulinRepository.ts",
+    "server/api/insulin/applications.post.ts",
+    "server/api/insulin/applications.get.ts",
+    "tests/unit/insulin/insulinApplication.test.ts",
+    "tests/integration/insulin/sqliteInsulinApplicationRepository.test.ts",
+    "tests/e2e/insulin.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:46:38.040020+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "07e139dd-2bfb-49a0-bc3e-0b6ab1243d6b",
+    "reference": "user-approved-insulin-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "331a56caaa07ea5b50a8aec20914e3cc2c6c55f76e5b5e6cfeafa4548fff27e0",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/domain/insulin/validateInsulinApplication.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "d4cf21b48e176282afe55815e0367cd94e59dbe104a80bde149d0b058c2ae33e",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/domain/insulin/insulinApplication.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "910c00c9a02b600f4f991e302cf3dc3f447f676fc0b7ec87ede2a84e87d06bc1",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/insulin/insulinApplicationRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "ac71cf856be9dc138366547266ece9622f9b8cac8758b27293a892ee6e2a2055",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/insulin/recordInsulinApplication.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "a5164578c4a117ffb848e1c1bd34f5115cfb80a034b3f74afc1915a80a176959",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/insulin/listInsulinHistory.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/4"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "e57f5675517234a8772e66de1cbc59cd86571ac8693d8370428066dec7ff26bd",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/infrastructure/insulin/memoryInsulinApplicationRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/5"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "8a5368b155ddc2f9b823548367b2152500cf9f1ab2cfdf7617c83529b0a1aaa2",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/insulin/migrations/004_create_insulin_applications.sql",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/6"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "602c4e6250ff21ccebcee80650cc1df4237f3bb35a8704ce34c298d573381789",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/insulin/sqliteInsulinApplicationRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/7"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "139f7a1de41a6464ebac15a299daa87c82379af3144bcfff8525477c2618f12c",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/utils/insulinRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/8"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "46d00d4309aa02dd28e7b3cc1d695314e3813d67ec08e065e29f41b8b0905522",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/insulin/applications.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/9"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "f8ff35a85dcfca7bedb0d0fa4680b24bd492cb3644ef9b11b47b9729e81fbe27",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/insulin/applications.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/10"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "9f8d3cfffcaa07c657988d1658cebcd8be31eb9efb00c7d50b073f92906465fc",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/unit/insulin/insulinApplication.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/11"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "a7db84636b0d7e4b75f99950bc01017cee7481292a9d19350434e7c712504ed3",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/integration/insulin/sqliteInsulinApplicationRepository.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/12"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "0ebc39fa3ca76cb1d9592a44059f90b390c933aff84eed4dc61108af974beccf",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/e2e/insulin.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved insulin vertical slice",
+          "shared/domain/glucose/validateGlucoseReading.ts: IANA/DST convention",
+          "tia-bete-mvp/README.md: manual insulin safety boundary"
+        ],
+        "protectedBy": {
+          "contract": "Manual declarative insulin only; no dose recommendation, calculation, reminder linkage or automatic application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/13"
+    }
+  ],
+  "createdAt": "2026-11-04T18:46:22.862616+00:00",
+  "id": "07e139dd-2bfb-49a0-bc3e-0b6ab1243d6b",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:46:29.105346+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "shared/domain/insulin/validateInsulinApplication.ts",
+      "shared/domain/insulin/insulinApplication.ts",
+      "shared/application/insulin/insulinApplicationRepository.ts",
+      "shared/application/insulin/recordInsulinApplication.ts",
+      "shared/application/insulin/listInsulinHistory.ts",
+      "shared/infrastructure/insulin/memoryInsulinApplicationRepository.ts",
+      "server/infrastructure/insulin/migrations/004_create_insulin_applications.sql",
+      "server/infrastructure/insulin/sqliteInsulinApplicationRepository.ts",
+      "server/utils/insulinRepository.ts",
+      "server/api/insulin/applications.post.ts",
+      "server/api/insulin/applications.get.ts",
+      "tests/unit/insulin/insulinApplication.test.ts",
+      "tests/integration/insulin/sqliteInsulinApplicationRepository.test.ts",
+      "tests/e2e/insulin.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

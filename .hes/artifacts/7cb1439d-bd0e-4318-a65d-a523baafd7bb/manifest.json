@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "app/app.vue"
+  ],
+  "appliedAt": "2026-11-04T14:09:39.116116+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "7cb1439d-bd0e-4318-a65d-a523baafd7bb",
+    "reference": "user-approved-local-first-2026-11-04-build-correction",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "4c5490e8155f767b97fb7676a7ee1f32899a25adadaac96ec75475f16e944a11",
+      "contentSha256": "b4bf6b272b51b5c350d5106a0288e05afe50abc812247e0f7fe2d696ed54a1dd",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "shared/domain/glucose/validateGlucoseReading.ts",
+          "finding:BUILD_FAILURE:app/app.vue"
+        ],
+        "protectedBy": {
+          "risk": "the local form must build while retaining domain isolation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T14:09:33.261242+00:00",
+  "id": "7cb1439d-bd0e-4318-a65d-a523baafd7bb",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:09:39.063156+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "app/app.vue"
+    ]
+  },
+  "state": "APPLIED"
+}

@@ -1,0 +1,275 @@
+{
+  "applied": [
+    "nuxt.config.ts",
+    "app/assets/css/main.css",
+    "app/components/AppButton.vue",
+    "app/components/AppInput.vue",
+    "app/components/AppCard.vue",
+    "app/components/StatusIndicator.vue",
+    "app/components/AppBottomNavigation.vue",
+    "shared/domain/glucose/validateGlucoseReading.ts",
+    "tests/unit/glucose/validateGlucoseReading.test.ts",
+    "app/app.vue"
+  ],
+  "appliedAt": "2026-11-04T14:08:39.533568+00:00",
+  "approval": {
+    "operations": [
+      "CREATE",
+      "MODIFY"
+    ],
+    "planId": "7cc4f251-4347-48f9-a3e8-62292e171522",
+    "reference": "user-approved-local-first-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "8e9e305203eae1f89b19e8d22ceaa7f5d70139badc71e0c9fc585411edff38d1",
+      "contentSha256": "f4f2b4ebfccd00c48481585ee5d980c6bfc8011f3e3a15e4090040325df5d09b",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "nuxt.config.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "a38bf398e6f7a41bad5f149c575019975a4b4febaae98f29e5057f096724ea01",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/assets/css/main.css",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "d287bed1a177b3aa7f23497c2490bfd07f3f35133456b88a6ed58514fddeedf0",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/components/AppButton.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "5063adf60b4a71cbd4e1e3d938e7538e37953a6b3efdbab70de1268692598a50",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/components/AppInput.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "798415a1f029b3d9a14d390f618c489ad4fed9a9065fcb2307a78c1babcde66c",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/components/AppCard.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/4"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "5aece2873e3dcad163ead53802e5a2d9aa2e3831534455906c4966e8eec22b2b",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/components/StatusIndicator.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/5"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "99b26e0a17daaa513b0b43e1183686ecd14a1685913b812da3ee979a0441d57d",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/components/AppBottomNavigation.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/6"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "6cc9141d5e05e9eb68d09e18e49238f2868a91e74ce5e98659571967413f1383",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/domain/glucose/validateGlucoseReading.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/7"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "1563c5d9da774b8bf39793bc95c4391ffbd5b6b884d0a35878d3cf51d907b171",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/unit/glucose/validateGlucoseReading.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/8"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "e745810823a1b285d65e1912edff0175ab3c1acf0fd591d57edb4ce6db83c856",
+      "contentSha256": "4c5490e8155f767b97fb7676a7ee1f32899a25adadaac96ec75475f16e944a11",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "nuxt.config.ts",
+          "tia-bete-mvp/README.md",
+          "harness/harness-design.md"
+        ],
+        "protectedBy": {
+          "risk": "temporary records must not appear persisted and controls must remain accessible"
+        },
+        "rollback": null
+      },
+      "staged": "payload/9"
+    }
+  ],
+  "createdAt": "2026-11-04T14:08:33.934596+00:00",
+  "id": "7cc4f251-4347-48f9-a3e8-62292e171522",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:08:39.476794+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "CREATE",
+      "MODIFY"
+    ],
+    "paths": [
+      "nuxt.config.ts",
+      "app/app.vue",
+      "app/assets/css/*.css",
+      "app/components/*.vue",
+      "shared/domain/glucose/*.ts",
+      "tests/unit/glucose/*.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

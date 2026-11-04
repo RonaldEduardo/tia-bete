@@ -1,0 +1,375 @@
+{
+  "applied": [
+    "nuxt.config.ts",
+    "shared/domain/foods/food.ts",
+    "shared/domain/foods/meal.ts",
+    "shared/application/foods/useCases.ts",
+    "shared/application/foods/repositories.ts",
+    "app/app.vue",
+    "app/components/AppBottomNavigation.vue",
+    "app/components/FoodMealsSection.vue",
+    "server/api/foods/index.get.ts",
+    "server/api/foods/index.post.ts",
+    "server/api/meals/index.get.ts",
+    "server/api/meals/[id].get.ts",
+    "server/api/meals/index.post.ts",
+    "server/infrastructure/foods/sqliteFoodMealRepositories.ts",
+    "server/infrastructure/foods/migrations/005_create_foods_meals.sql",
+    "server/utils/foodMealRepositories.ts"
+  ],
+  "appliedAt": "2026-11-04T19:07:38.878069+00:00",
+  "approval": {
+    "operations": [
+      "CREATE",
+      "MODIFY"
+    ],
+    "planId": "8d1918f2-ae7a-426e-a6f6-71521a7b2399",
+    "reference": "food-001-explicit-authorization",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "e0a54859bd9a4e12f3162308821bb77593160bc8eb4596f92a634cb327e530c3",
+      "contentSha256": "8468ce553031bf101eadd01093a1fb703df435086513b92cf8fd2790a50d3d68",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "nuxt.config.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "f4e3cd1664798d177a4c44b31b388c343516a712be3e67f78226b5195633656b",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/domain/foods/food.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "caa2c1179e78db0f644f26ba364769cfdf0d5d451a21e4624b1bf3a5bcaeca83",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/domain/foods/meal.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "83025f1c1df4f2384119ac2bb0cd785c4da697bd9ec4819099e67d71cc768899",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/foods/useCases.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "91d0bbcae03df58e0982e354543ad9ee87c41fadfc5b8266c4a19d2c264eb771",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/foods/repositories.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/4"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "0ab7d7950be5864c7d93076acf9ac03efe92ca02142ea2efc9c8e3402859a7c9",
+      "contentSha256": "e4c49db5cd0ef14dae718e46a7f8af0218bdef7e2be65688a315c82dd99a5335",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/5"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "2fd33810738113eed5cf69c99ce7857fa9f8a09a5afc8b617577fbcb3556af46",
+      "contentSha256": "c0a7f01cd103fc2d3b270921db2ef4b8917334050036d9cda20a7fa918b2b171",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/components/AppBottomNavigation.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/6"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "900dac5f663ae9530d593f7847b6801062abac9947ac9c999be9614404b32f96",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "app/components/FoodMealsSection.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/7"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "53d21b2d8959d4149b03714c51dc14ca19d463ab83054e299cf65ea35bef82b0",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/foods/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/8"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "ec947ad99c2e89671eea970f2096506d68e0dce7ce1ad5aa2d9188b1758f9dd8",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/foods/index.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/9"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "ae57a91315fc17a53bf1fac25ba910df4774ccb071dc5e4bb3da48eb7f9359bc",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/meals/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/10"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "97d1e01c2d3d1caf54e6235a9bb84e000cc55601a3cf12bb681871ec43d02baf",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/meals/[id].get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/11"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "b19af88678bb0ce48529968f4d2f023d4679109f2e7c152a3004ad57a23fd572",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/meals/index.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/12"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "b9f2387181c51c5afbd049f0cf8c919b1dbf094dc6572ab61e98e8ceb470a263",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/foods/sqliteFoodMealRepositories.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/13"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "528898e90f04119fdce8577c54beaaacc94f235499a0b2dbc5d41ffdc0baa243",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/foods/migrations/005_create_foods_meals.sql",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/14"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "c0806663dfccdb860005ae907b0940c32db175f246a30ef7946c8e655989e59f",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/utils/foodMealRepositories.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD-001 approved scope"
+        ],
+        "protectedBy": {
+          "contract": "No insulin dose calculation"
+        },
+        "rollback": null
+      },
+      "staged": "payload/15"
+    }
+  ],
+  "createdAt": "2026-11-04T19:07:32.676425+00:00",
+  "id": "8d1918f2-ae7a-426e-a6f6-71521a7b2399",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T19:07:38.822833+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "CREATE",
+      "MODIFY"
+    ],
+    "paths": [
+      "nuxt.config.ts",
+      "shared/domain/foods/food.ts",
+      "shared/domain/foods/meal.ts",
+      "shared/application/foods/useCases.ts",
+      "shared/application/foods/repositories.ts",
+      "app/app.vue",
+      "app/components/AppBottomNavigation.vue",
+      "app/components/FoodMealsSection.vue",
+      "server/api/foods/index.get.ts",
+      "server/api/foods/index.post.ts",
+      "server/api/meals/index.get.ts",
+      "server/api/meals/[[]id].get.ts",
+      "server/api/meals/index.post.ts",
+      "server/infrastructure/foods/sqliteFoodMealRepositories.ts",
+      "server/infrastructure/foods/migrations/005_create_foods_meals.sql",
+      "server/utils/foodMealRepositories.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

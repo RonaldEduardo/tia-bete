@@ -1,0 +1,54 @@
+{
+  "id": "7b564c6b-c75a-48d3-ab28-e8f76cc70005",
+  "integrity": "3e2604d2e3d26d8f81f8d3d63a2ebd94b819aea5d0ee518acb59286e9c7e0222",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "contracts/reminders.md",
+      "harness/traceability-matrix.md",
+      "tests/unit/glucose/glucoseReminderUseCase.test.ts",
+      "tests/integration/glucose/sqliteGlucoseReminderTransaction.test.ts",
+      "tests/e2e/reminders.spec.ts"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T18:38:03.888565+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "contracts/reminders.md",
+          "purpose": "Registrar a revis\u00e3o REM-D com limites e resultados factuais."
+        },
+        {
+          "path": "harness/traceability-matrix.md",
+          "purpose": "Registrar cen\u00e1rios ativos e transacionais testados."
+        }
+      ],
+      "evidence": [
+        "contracts/reminders.md",
+        "harness/traceability-matrix.md",
+        "tests/unit/glucose/glucoseReminderUseCase.test.ts",
+        "tests/integration/glucose/sqliteGlucoseReminderTransaction.test.ts",
+        "tests/e2e/reminders.spec.ts"
+      ],
+      "limitations": [
+        "Sem verifica\u00e7\u00e3o isolada HES, scheduler, push, Cron, claims, leases, edi\u00e7\u00e3o de configura\u00e7\u00e3o ou conclus\u00e3o de insulina."
+      ],
+      "objective": "Registrar as evid\u00eancias executadas de REM-D e sua rastreabilidade, mantendo o estado HES distinto de VERIFIED.",
+      "riskProtected": "Documentar somente comportamentos realmente validados: polling vis\u00edvel, refresh ao retorno, conclus\u00e3o REM-006 e transa\u00e7\u00e3o SQLite; n\u00e3o alegar scheduler, push ou app fechado.",
+      "validation": {
+        "execution": "Manual local; HES continua UNVERIFIED.",
+        "strategy": "Revisar o diff documental; comandos citados foram executados nesta sess\u00e3o."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

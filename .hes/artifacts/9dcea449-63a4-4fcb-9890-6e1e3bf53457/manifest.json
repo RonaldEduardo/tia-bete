@@ -1,0 +1,128 @@
+{
+  "applied": [
+    "server/api/glucose/readings.post.ts",
+    "app/app.vue",
+    "app/assets/css/main.css",
+    "tests/e2e/reminders.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:34:45.764525+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "9dcea449-63a4-4fcb-9890-6e1e3bf53457",
+    "reference": "user-approved-rem-d-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "902dfb3edc88566da7c0163f4eb1f8b9d41a46e028ae9051518e225d985a2d68",
+      "contentSha256": "59249059352ccb1feb4417165e2ff08fa20956da02478a488828bbfcfc12b37a",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/glucose/readings.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "66db9d813973c88f1d1a48598214e77a20283ff095910233b660ca54d44f9b44",
+      "contentSha256": "92961d7440a68f24eb0b92e33a9084fa3e5dcd949736d105355e6bf0360ba416",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "5049261909b777982b03ba5e5a447b149d766dc6f4bcaaa267b4644c67b82b5b",
+      "contentSha256": "a90f46c3cd9010d7756ce3eafdb978c542b4717f1695a4734415c95ceee83da0",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/assets/css/main.css",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "98552313929c2266daae297b48cca47ee5b2254c34b8b19ad9c10cdbd2f30517",
+      "contentSha256": "b2f100455e1085034f60f9b630768bc74ac46d56b8bd6431cf17b99300dc3475",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/reminders.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    }
+  ],
+  "createdAt": "2026-11-04T18:34:37.481182+00:00",
+  "id": "9dcea449-63a4-4fcb-9890-6e1e3bf53457",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:34:45.648542+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "server/api/glucose/readings.post.ts",
+      "app/app.vue",
+      "app/assets/css/main.css",
+      "tests/e2e/reminders.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

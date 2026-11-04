@@ -1,0 +1,64 @@
+import { expect, test, type Page } from '@playwright/test'
+
+const loadHome = async (page: Page) => {
+  const history = page.waitForResponse(response => response.url().endsWith('/api/glucose/readings') && response.request().method() === 'GET')
+  await page.goto('/')
+  await history
+}
+
+const openForm = async (page: Page) => {
+  await page.getByRole('button', { name: 'Registrar glicemia' }).click()
+}
+
+const fillReading = async (page: Page, value: string) => {
+  await page.locator('#glucose-value').fill(value)
+  await page.locator('#glucose-date').fill('2026-11-04')
+  await page.locator('#glucose-time').fill('08:30')
+}
+
+test.describe.serial('GLU-REC-001', () => {
+  test('registra glicemia sintética e preserva o histórico após reload', async ({ page }) => {
+    await loadHome(page)
+    await openForm(page)
+    await fillReading(page, '121')
+    await page.getByRole('button', { name: 'Salvar registro local' }).click()
+
+    await expect(page.getByText('121 mg/dL').first()).toBeVisible()
+    await expect(page.getByText('Local: permanece neste ambiente após recarregar.')).toBeVisible()
+    await page.reload()
+    await expect(page.getByText('121 mg/dL').first()).toBeVisible()
+  })
+
+  test('rejeita valor inválido no fluxo HTTP sem criar histórico', async ({ page }) => {
+    await loadHome(page)
+    await openForm(page)
+    await fillReading(page, '0')
+    await page.getByRole('button', { name: 'Salvar registro local' }).click()
+
+    await expect(page.getByText('Informe um valor válido.')).toBeVisible()
+    await expect(page.locator('#glucose-form-title')).toBeVisible()
+  })
+
+  test('não confirma sucesso quando a API responde erro de persistência', async ({ page }) => {
+    await loadHome(page)
+    await page.route('**/api/glucose/readings', async route => {
+      if (route.request().method() !== 'POST') return route.continue()
+      await route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ message: 'Falha de persistência simulada.' }) })
+    })
+    await openForm(page)
+    await fillReading(page, '199')
+    await page.getByRole('button', { name: 'Salvar registro local' }).click()
+
+    await expect(page.getByText('Não foi possível salvar o registro local. Tente novamente.')).toBeVisible()
+    await expect(page.locator('#glucose-form-title')).toBeVisible()
+    await expect(page.getByText('199 mg/dL')).toHaveCount(0)
+  })
+
+  test('mantém interação e navegação principal no viewport mobile', async ({ page }) => {
+    await loadHome(page)
+    await expect(page.getByRole('navigation', { name: 'Navegação principal' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Hoje' })).toHaveAttribute('href', '#hoje')
+    await openForm(page)
+    await expect(page.locator('#glucose-value')).toBeEditable()
+  })
+})

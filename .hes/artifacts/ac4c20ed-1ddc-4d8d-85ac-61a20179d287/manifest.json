@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "app/app.vue"
+  ],
+  "appliedAt": "2026-11-04T17:29:21.381287+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "ac4c20ed-1ddc-4d8d-85ac-61a20179d287",
+    "reference": "user-approved-vue-api-compatibility-correction-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "07fcdc6348f9712f43ac88e0ab86ab200cf55441cc0c848502aaf695a7cf58aa",
+      "contentSha256": "d38dd7e76d487af3aff617405ee2836d241f859eb4d22f33f3d8072f950e264d",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "app/app.vue",
+          "server/api/glucose/readings.post.ts",
+          "Playwright browser POST 2026-11-04: value 121 becomes 422 value required; direct API string payload returns 200"
+        ],
+        "protectedBy": {
+          "contract": "GLU-REC-001 revision 2 HTTP input keeps value as string"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T17:29:13.923139+00:00",
+  "id": "ac4c20ed-1ddc-4d8d-85ac-61a20179d287",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T17:29:21.326164+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "app/app.vue"
+    ]
+  },
+  "state": "APPLIED"
+}

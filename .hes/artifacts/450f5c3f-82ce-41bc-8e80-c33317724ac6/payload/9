@@ -1,0 +1,30 @@
+import { describe, expect, it } from 'vitest'
+
+import { listGlucoseHistory } from '../../../shared/application/glucose/listGlucoseHistory'
+import { recordGlucoseReading } from '../../../shared/application/glucose/recordGlucoseReading'
+import { MemoryGlucoseReadingRepository } from '../../../shared/infrastructure/glucose/memoryGlucoseReadingRepository'
+
+describe('glucose use cases', () => {
+  it('stores valid temporary readings and lists them by occurredAt, createdAt, then id', () => {
+    const repository = new MemoryGlucoseReadingRepository()
+    const dependencies = { now: () => '2026-11-04T12:00:00.000Z', createId: (() => ['a', 'b', 'c'].shift()!) }
+
+    for (const time of ['08:00', '09:00', '09:00']) {
+      expect(recordGlucoseReading({ value: '120', date: '2026-11-04', time, timeZone: 'America/Sao_Paulo' }, repository, dependencies)).toHaveProperty('reading')
+    }
+
+    expect(listGlucoseHistory(repository).map(({ id }) => id)).toEqual(['c', 'b', 'a'])
+  })
+
+  it('does not store an invalid reading', () => {
+    const repository = new MemoryGlucoseReadingRepository()
+    const result = recordGlucoseReading(
+      { value: '-1', date: '2026-11-04', time: '08:00', timeZone: 'America/Sao_Paulo' },
+      repository,
+      { now: () => '2026-11-04T12:00:00.000Z', createId: () => 'reading-1' }
+    )
+
+    expect(result).toEqual({ errors: { value: 'invalid' } })
+    expect(listGlucoseHistory(repository)).toEqual([])
+  })
+})

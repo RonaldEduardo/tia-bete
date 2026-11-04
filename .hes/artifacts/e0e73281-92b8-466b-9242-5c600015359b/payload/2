@@ -1,0 +1,29 @@
+# GLU-SMOKE-001 — Proposta de smoke E2E de glicemia temporária
+
+- **Revisão:** 1
+- **Governança:** DRAFT
+- **Entrega:** NOT_IMPLEMENTED
+- **Executor proposto:** Playwright
+- **Dependência:** Playwright e browser do executor ainda não estão provisionados.
+
+## Objetivo
+
+Provar, em um navegador real, que a tela **Hoje** registra uma glicemia sintética, mostra-a no histórico da sessão em ordem decrescente e deixa explícito que o dado é temporário.
+
+## Cenário único
+
+1. Abrir a tela Hoje em uma nova aba.
+2. Acionar **Registrar glicemia**.
+3. Preencher um valor sintético e uma data/hora local válida.
+4. Confirmar o registro.
+5. Confirmar no histórico o valor e o aviso de que o registro será perdido ao recarregar.
+6. Registrar uma segunda leitura com `occurredAt` posterior.
+7. Confirmar que a segunda leitura aparece antes da primeira.
+8. Recarregar a página e confirmar que o histórico está vazio.
+
+## Limites
+
+- Não usa dados clínicos reais.
+- Não valida armazenamento durável: o comportamento esperado é a perda de dados no reload.
+- Não seleciona ou simula timezone de navegador; DST continua coberto por Vitest no domínio.
+- Não instala dependências, nem cria spec Playwright, até aprovação específica para executar o gate E2E.

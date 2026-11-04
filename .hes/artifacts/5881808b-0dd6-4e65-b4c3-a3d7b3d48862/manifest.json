@@ -1,0 +1,102 @@
+{
+  "applied": [
+    "server/api/reminder-occurrences/snooze.post.ts",
+    "server/api/reminder-occurrences/ignore.post.ts",
+    "package.json"
+  ],
+  "appliedAt": "2026-11-04T18:23:45.428995+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "5881808b-0dd6-4e65-b4c3-a3d7b3d48862",
+    "reference": "user-approved-reminder-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "f20f03ef957cd23414bc8523caef4cc6b6796f340a1b1f922459b8f76633a5f7",
+      "contentSha256": "2333e4377768cfc00c47e02a4827db2bf2560f5f1509d8374deb4f9b74d5b35d",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/reminder-occurrences/snooze.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run typecheck failure: action route imports",
+          "npm run test:unit failure: Playwright file discovered by Vitest"
+        ],
+        "protectedBy": {
+          "contract": "No semantic reminder rule changes; only route module resolution and test runner boundary"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "d097b4401254c7a1d063e8dc608f13e8fac6d00b2cc018895e2377ab35f2f3b0",
+      "contentSha256": "426a18534c06537ed8720ba5289582941aa625eff7b9ddcac0f17c707ddb67f3",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/reminder-occurrences/ignore.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run typecheck failure: action route imports",
+          "npm run test:unit failure: Playwright file discovered by Vitest"
+        ],
+        "protectedBy": {
+          "contract": "No semantic reminder rule changes; only route module resolution and test runner boundary"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "939944becb49134cf6401e6996646db6131f55d9be822366ffb4b06dfc559ffe",
+      "contentSha256": "c9746da29a7cb9032dcb65beab6fb725a16dc547a7dca424dc79281af6496ef7",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "package.json",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run typecheck failure: action route imports",
+          "npm run test:unit failure: Playwright file discovered by Vitest"
+        ],
+        "protectedBy": {
+          "contract": "No semantic reminder rule changes; only route module resolution and test runner boundary"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    }
+  ],
+  "createdAt": "2026-11-04T18:23:24.163429+00:00",
+  "id": "5881808b-0dd6-4e65-b4c3-a3d7b3d48862",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:23:39.961840+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "server/api/reminder-occurrences/snooze.post.ts",
+      "server/api/reminder-occurrences/ignore.post.ts",
+      "package.json"
+    ]
+  },
+  "state": "APPLIED"
+}

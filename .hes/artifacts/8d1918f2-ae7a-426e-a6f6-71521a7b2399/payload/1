@@ -1,0 +1,4 @@
+export type Food = { id:string,name:string,carbsPer100g:number,createdAt:string }
+export type FoodInput={name:string,carbsPer100g:string}
+export type Errors=Partial<Record<keyof FoodInput|'id'|'createdAt','required'|'invalid'>>
+export const createFood=(input:FoodInput&{id:string,createdAt:string}):{food:Food}|{errors:Errors}=>{const errors:Errors={};if(!input.id.trim())errors.id='required';if(!input.name.trim())errors.name='required';const carbs=Number(input.carbsPer100g);if(!input.carbsPer100g.trim())errors.carbsPer100g='required';else if(!Number.isFinite(carbs)||carbs<0)errors.carbsPer100g='invalid';if(Number.isNaN(Date.parse(input.createdAt)))errors.createdAt='invalid';return Object.keys(errors).length?{errors}:{food:{id:input.id,name:input.name.trim(),carbsPer100g:carbs,createdAt:new Date(input.createdAt).toISOString()}}}

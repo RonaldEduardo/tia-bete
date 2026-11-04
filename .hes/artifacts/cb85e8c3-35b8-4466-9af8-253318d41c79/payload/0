@@ -1,0 +1,8 @@
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join, resolve } from 'node:path'
+import { afterEach, describe, expect, it } from 'vitest'
+import { SqliteMealRepository } from '../../../server/infrastructure/foods/sqliteFoodMealRepositories'
+const sql=readFileSync(resolve('server/infrastructure/foods/migrations/005_create_foods_meals.sql'),'utf8');const directories:string[]=[]
+afterEach(()=>directories.splice(0).forEach(x=>rmSync(x,{recursive:true,force:true})))
+describe('SqliteMealRepository',()=>it('rolls back the meal when an item insert fails',async()=>{const dir=mkdtempSync(join(tmpdir(),'food-'));directories.push(dir);const repository=new SqliteMealRepository(join(dir,'food.sqlite'),[{version:'005',sql}]);await expect(repository.save({id:'meal-1',occurredAt:'2026-11-04T08:00:00.000Z',createdAt:'2026-11-04T08:01:00.000Z',timeZone:'UTC',totalCarbohydrates:10,items:[{foodId:'same',foodName:'A',grams:10,carbsPer100g:10,carbohydrates:1},{foodId:'same',foodName:'B',grams:10,carbsPer100g:10,carbohydrates:1}]})).rejects.toThrow();expect(await repository.list()).toEqual([])}))

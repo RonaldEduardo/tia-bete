@@ -1,0 +1,84 @@
+{
+  "applied": [
+    "contracts/glucose-recording.md",
+    "harness/traceability-matrix.md"
+  ],
+  "appliedAt": "2026-11-04T14:55:40.686350+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "2b5da840-1937-4a8b-a174-dbd8a12a41ae",
+    "reference": "user-approved-glu-rec-001-revision-2-evidence-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "40daf20a20cb3e5f4b56de25fbf93d82abce786eec2e00267e7ef1da00303682",
+      "contentSha256": "4fdf37ebab5b1fe0d51c6d1ecfc358581c6841c55b4b45692ebca1c8db3ff9b9",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "contracts/glucose-recording.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run test:unit exit 0 (14 tests)",
+          "npm run typecheck exit 0",
+          "npm run build exit 0",
+          "API smoke POST/GET and restart on 127.0.0.1:4317"
+        ],
+        "protectedBy": {
+          "risk": "delivery status must reflect executed persistence evidence without claiming HES verification"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "b6fb07cdedf6f6000c968efc774a2937e40e1d34fa865d0db0e036b88c09e2dc",
+      "contentSha256": "c3eeb6ed92523a877ec5ee6d714ff15a7d2eeeb11d21e45850c2ae64549ecd08",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "harness/traceability-matrix.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run test:unit exit 0 (14 tests)",
+          "npm run typecheck exit 0",
+          "npm run build exit 0",
+          "API smoke POST/GET and restart on 127.0.0.1:4317"
+        ],
+        "protectedBy": {
+          "risk": "delivery status must reflect executed persistence evidence without claiming HES verification"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    }
+  ],
+  "createdAt": "2026-11-04T14:55:12.163180+00:00",
+  "id": "2b5da840-1937-4a8b-a174-dbd8a12a41ae",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:55:40.631096+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "contracts/glucose-recording.md",
+      "harness/traceability-matrix.md"
+    ]
+  },
+  "state": "APPLIED"
+}

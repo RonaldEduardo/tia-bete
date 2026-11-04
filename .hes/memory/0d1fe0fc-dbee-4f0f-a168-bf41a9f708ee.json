@@ -1,0 +1,91 @@
+{
+  "id": "0d1fe0fc-dbee-4f0f-a168-bf41a9f708ee",
+  "integrity": "3bc638bdc54bbc84ef68b55068b1b60327b8b31e29e9a5b3bb9fc2089793c84f",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "app/app.vue",
+      "nuxt.config.ts",
+      "package.json",
+      "tia-bete-mvp/README.md",
+      "harness/harness-design.md",
+      "tests/unit/foods/calculateCarbohydrates.test.ts"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T13:55:15.671839+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "nuxt.config.ts",
+          "purpose": "Carregar tokens globais de design."
+        },
+        {
+          "path": "app/assets/css/main.css",
+          "purpose": "Tokens sem\u00e2nticos e layout responsivo sem depend\u00eancias."
+        },
+        {
+          "path": "app/components/AppButton.vue",
+          "purpose": "A\u00e7\u00e3o prim\u00e1ria reutiliz\u00e1vel."
+        },
+        {
+          "path": "app/components/AppInput.vue",
+          "purpose": "Campo rotulado e acess\u00edvel com erro."
+        },
+        {
+          "path": "app/components/AppCard.vue",
+          "purpose": "Superf\u00edcie visual reutiliz\u00e1vel."
+        },
+        {
+          "path": "app/components/StatusIndicator.vue",
+          "purpose": "Feedback de estado acess\u00edvel."
+        },
+        {
+          "path": "app/components/AppBottomNavigation.vue",
+          "purpose": "Navega\u00e7\u00e3o estrutural responsiva."
+        },
+        {
+          "path": "shared/domain/glucose/validateGlucoseReading.ts",
+          "purpose": "Valida\u00e7\u00e3o pura do formul\u00e1rio."
+        },
+        {
+          "path": "tests/unit/glucose/validateGlucoseReading.test.ts",
+          "purpose": "Cobertura Vitest das regras de valida\u00e7\u00e3o."
+        },
+        {
+          "path": "app/app.vue",
+          "purpose": "Tela Hoje e formul\u00e1rio local de demonstra\u00e7\u00e3o."
+        }
+      ],
+      "evidence": [
+        "app/app.vue",
+        "nuxt.config.ts",
+        "package.json",
+        "tia-bete-mvp/README.md",
+        "harness/harness-design.md",
+        "tests/unit/foods/calculateCarbohydrates.test.ts"
+      ],
+      "limitations": [
+        "Sem autentica\u00e7\u00e3o ou Supabase, nenhuma submiss\u00e3o \u00e9 persistida.",
+        "N\u00e3o h\u00e1 Playwright instalado ou ambiente Supabase para validar E2E/RLS.",
+        "HES AUDIT n\u00e3o interpreta sem\u00e2ntica TypeScript/Vue.",
+        "VERIFY e ISOLATED permanecem bloqueados; sandbox n\u00e3o est\u00e1 dispon\u00edvel."
+      ],
+      "objective": "Criar a funda\u00e7\u00e3o visual mobile-first e o fluxo demonstr\u00e1vel de registro de glicemia sem autentica\u00e7\u00e3o, persist\u00eancia ou dados cl\u00ednicos sint\u00e9ticos apresentados como reais.",
+      "riskProtected": "Uma interface cl\u00ednica aparente pode induzir o usu\u00e1rio a acreditar que um registro foi persistido ou que dados sint\u00e9ticos representam dados de sa\u00fade reais; controles sem r\u00f3tulos ou valida\u00e7\u00e3o dificultam uso seguro e acess\u00edvel.",
+      "validation": {
+        "execution": "LOCAL_TRUSTED continua bloqueado sem commit HEAD e worktree limpo. A solicita\u00e7\u00e3o autoriza somente execu\u00e7\u00e3o manual expl\u00edcita no host; ela n\u00e3o equivale a VERIFY ou sandbox.",
+        "strategy": "Executar os dois testes Vitest por comando versionado e abrir a aplica\u00e7\u00e3o Nuxt localmente para inspe\u00e7\u00e3o manual do fluxo e dos viewports."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

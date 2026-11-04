@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "package.json"
+  ],
+  "appliedAt": "2026-11-04T17:16:41.055888+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "d30227e7-bd7e-4116-a2a8-9f29e62e0a40",
+    "reference": "user-approved-harness-modification-test-unit-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "10cdc7681e0d403f207df5b273d948e60b4d793041f3fb964c35dea7d844fb03",
+      "contentSha256": "939944becb49134cf6401e6996646db6131f55d9be822366ffb4b06dfc559ffe",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "package.json",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run test:unit output 2026-11-04: Vitest collected tests/e2e/glucose.spec.ts",
+          "package.json"
+        ],
+        "protectedBy": {
+          "risk": "separate Vitest and Playwright runners so the regression gate only collects its own suite"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T17:16:34.676751+00:00",
+  "id": "d30227e7-bd7e-4116-a2a8-9f29e62e0a40",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T17:16:40.993675+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "package.json"
+    ]
+  },
+  "state": "APPLIED"
+}

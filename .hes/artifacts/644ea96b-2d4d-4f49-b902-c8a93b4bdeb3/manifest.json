@@ -1,0 +1,53 @@
+{
+  "applied": [
+    "tests/integration/foods/sqliteFoodMealRepositories.test.ts"
+  ],
+  "appliedAt": "2026-11-04T20:25:55.352415+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "644ea96b-2d4d-4f49-b902-c8a93b4bdeb3",
+    "reference": "food-001-snapshot-test-fix-apply-approved",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "e5c4cd929119dd98588887b47b09fce66187bc6acc27ba76bdc8dad8095b805f",
+      "contentSha256": "1f44f2b50e314abebf383363cb11d5bab9cc7992fcfc38ce3bc40cdb81373bc6",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/integration/foods/sqliteFoodMealRepositories.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "FOOD snapshot and atomicity requirements"
+        ],
+        "protectedBy": {
+          "contract": "Historical nutritional snapshots are immutable and meals persist atomically"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T20:22:26.316414+00:00",
+  "id": "644ea96b-2d4d-4f49-b902-c8a93b4bdeb3",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T20:22:29.357481+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/integration/foods/sqliteFoodMealRepositories.test.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

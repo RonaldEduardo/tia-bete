@@ -1,0 +1,10 @@
+import { join } from 'node:path'
+
+import { SqliteGlucoseReadingRepository } from '../infrastructure/glucose/sqliteGlucoseReadingRepository'
+
+let repository: SqliteGlucoseReadingRepository | undefined
+
+export const getGlucoseRepository = () => {
+  repository ??= new SqliteGlucoseReadingRepository(process.env.TIA_BETE_DB_PATH || join(process.cwd(), '.data', 'tia-bete.sqlite'))
+  return repository
+}

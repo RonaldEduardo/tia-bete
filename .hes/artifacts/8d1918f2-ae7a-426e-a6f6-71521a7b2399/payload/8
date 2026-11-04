@@ -1,0 +1,1 @@
+import{getFoodRepository}from'../../../utils/foodMealRepositories';export default defineEventHandler(()=>foodRepository.list())

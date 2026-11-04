@@ -1,0 +1,22 @@
+# Matriz de rastreabilidade do harness
+
+| ID | Prioridade | Contrato/cenário | Executor planejado | Estado |
+| --- | --- | --- | --- | --- |
+| H01 / GLU-REC-001 | P0 | `occurredAt` preserva hora informada, distinto de `createdAt`; DST inexistente/ambíguo é rejeitado | Vitest domínio + aplicação | TESTED — Vitest: 2 suítes GLU-REC-001 PASS |
+| H02 | P1 | edição gera auditoria, sem duplicata | Vitest + pgTAP | BLOCKED — schema ausente |
+| H03 | P0 | aplicação requer confirmação explícita | Vitest + Playwright | PLANNED |
+| H04 | P0 | conclui no máximo uma ocorrência do dono | Vitest + pgTAP | BLOCKED — schema ausente |
+| H05 | P0 | tipos incompatíveis não concluem | Vitest | PLANNED |
+| H06 | P0 | snooze preserva agendamento e limite | Vitest fake clock | PLANNED |
+| H07 | P0 | claim/replay não duplica despacho | Vitest concorrente + integração | BLOCKED — worker ausente |
+| H08 | P1 | timezone/DST sem deslocamento silencioso | Vitest fake clock | PLANNED |
+| H09 | P0 | snapshot de item não muda com alimento | Vitest + pgTAP | BLOCKED — schema ausente |
+| H10 / TB-FOOD-001 | P0 | 150 g × 10 g/100 g = 15 g | Vitest | IMPLEMENTED — evidência HES pendente |
+| H11 | P0 | carboidratos negativos, não numéricos e zero inválido são rejeitados | Vitest | PLANNED |
+| H12 | P0 | usuário B não acessa recurso de A | pgTAP + Supabase local | BLOCKED — Supabase ausente |
+| H13 | P0 | offline não confirma sucesso | Playwright | BLOCKED — UI ausente |
+| H14 | P1 | exportação do autenticado, sem TIR | Vitest + Playwright | BLOCKED — relatório ausente |
+| H15 | P1 | push negado mantém painel | Playwright + manual mobile | BLOCKED — PWA/push ausentes |
+| H16 | P0 | laboratório isolado sem dose real | Vitest | PLANNED — S7 |
+| H17 | P1 | navegação preserva persistência | Playwright | BLOCKED — UI ausente |
+| H18 | P1 | teclado, rótulos e erros acessíveis | Playwright + revisão manual | BLOCKED — UI ausente |

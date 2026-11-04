@@ -1,0 +1,91 @@
+{
+  "id": "c4554208-a6b6-48e9-aa9a-29d71ce5e907",
+  "integrity": "a44ba6062a9e7e538f8f07b8fe068eacbcb2e86633f05354164dc6ea54520d35",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "app/app.vue",
+      "nuxt.config.ts",
+      "package.json",
+      "tia-bete-mvp/README.md",
+      "harness/harness-design.md",
+      "tests/unit/foods/calculateCarbohydrates.test.ts"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T14:06:31.883760+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "nuxt.config.ts",
+          "purpose": "Carregar tokens globais de design."
+        },
+        {
+          "path": "app/assets/css/main.css",
+          "purpose": "Tokens sem\u00e2nticos e layout responsivo sem depend\u00eancias."
+        },
+        {
+          "path": "app/components/AppButton.vue",
+          "purpose": "A\u00e7\u00e3o prim\u00e1ria reutiliz\u00e1vel."
+        },
+        {
+          "path": "app/components/AppInput.vue",
+          "purpose": "Campo rotulado e acess\u00edvel com erro."
+        },
+        {
+          "path": "app/components/AppCard.vue",
+          "purpose": "Superf\u00edcie visual reutiliz\u00e1vel."
+        },
+        {
+          "path": "app/components/StatusIndicator.vue",
+          "purpose": "Feedback de estado acess\u00edvel."
+        },
+        {
+          "path": "app/components/AppBottomNavigation.vue",
+          "purpose": "Navega\u00e7\u00e3o estrutural responsiva."
+        },
+        {
+          "path": "shared/domain/glucose/validateGlucoseReading.ts",
+          "purpose": "Valida\u00e7\u00e3o pura do formul\u00e1rio local."
+        },
+        {
+          "path": "tests/unit/glucose/validateGlucoseReading.test.ts",
+          "purpose": "Cobertura Vitest da valida\u00e7\u00e3o."
+        },
+        {
+          "path": "app/app.vue",
+          "purpose": "Tela Hoje e fluxo tempor\u00e1rio em mem\u00f3ria."
+        }
+      ],
+      "evidence": [
+        "app/app.vue",
+        "nuxt.config.ts",
+        "package.json",
+        "tia-bete-mvp/README.md",
+        "harness/harness-design.md",
+        "tests/unit/foods/calculateCarbohydrates.test.ts"
+      ],
+      "limitations": [
+        "Registros permanecem somente em mem\u00f3ria e s\u00e3o perdidos ao recarregar.",
+        "SQLite local e reposit\u00f3rios s\u00f3 ser\u00e3o introduzidos no incremento que realmente precisar de persist\u00eancia.",
+        "Supabase, PostgreSQL, RLS, autentica\u00e7\u00e3o, Cron, Vercel e Web Push n\u00e3o fazem parte deste incremento.",
+        "VERIFY e ISOLATED permanecem bloqueados; HES AUDIT n\u00e3o interpreta Vue/TypeScript semanticamente."
+      ],
+      "objective": "Implementar a funda\u00e7\u00e3o visual local-first: tela Hoje e registro tempor\u00e1rio de glicemia, mantendo regras de dom\u00ednio independentes de UI e infraestrutura.",
+      "riskProtected": "O usu\u00e1rio n\u00e3o pode confundir estado em mem\u00f3ria com dado persistido nem inserir dados de sa\u00fade reais em uma aplica\u00e7\u00e3o ainda sem prote\u00e7\u00e3o e persist\u00eancia adequadas.",
+      "validation": {
+        "execution": "LOCAL_TRUSTED est\u00e1 bloqueado sem commit HEAD e worktree limpo. Esta execu\u00e7\u00e3o ser\u00e1 manual, literal e no host, autorizada pelo operador; n\u00e3o \u00e9 VERIFY ou sandbox.",
+        "strategy": "Executar testes Vitest existentes e novos; iniciar Nuxt para verificar o fluxo manualmente em viewport m\u00f3vel e desktop."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

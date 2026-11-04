@@ -1,0 +1,132 @@
+{
+  "applied": [
+    "shared/application/reminders/reminderRepository.ts",
+    "shared/application/reminders/localDates.ts",
+    "shared/application/reminders/createLocalReminder.ts",
+    "shared/application/reminders/reconcileReminderOccurrences.ts"
+  ],
+  "appliedAt": "2026-11-04T18:22:28.738039+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "914817fe-997c-4d6a-9dd5-4e7272d0d8cc",
+    "reference": "user-approved-reminder-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "365977ba92284214e741949bb5d5deeb185f01cb0f29b17c795e25473475b6a0",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/reminders/reminderRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "91f355951df9a72d4fbbaedd4ea1cdf975f78755fe66c2a4421bf17605e6a9e3",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/reminders/localDates.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "ad59d631661ddc92389b202a0ef5200cbf092a989072ee5aa739eeea2a10f10f",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/reminders/createLocalReminder.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "90ebe429040270179228f232d74b22a12ea490e7a794b3535643ade1f08d98e7",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/reminders/reconcileReminderOccurrences.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    }
+  ],
+  "createdAt": "2026-11-04T18:21:26.402966+00:00",
+  "id": "914817fe-997c-4d6a-9dd5-4e7272d0d8cc",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:22:09.272748+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "shared/application/reminders/reminderRepository.ts",
+      "shared/application/reminders/localDates.ts",
+      "shared/application/reminders/createLocalReminder.ts",
+      "shared/application/reminders/reconcileReminderOccurrences.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

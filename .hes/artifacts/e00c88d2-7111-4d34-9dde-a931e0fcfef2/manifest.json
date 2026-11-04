@@ -1,0 +1,197 @@
+{
+  "applied": [
+    "shared/application/glucose/glucoseReminderTransaction.ts",
+    "shared/application/glucose/recordGlucoseAndCompleteReminder.ts",
+    "server/infrastructure/glucose/sqliteGlucoseReminderTransaction.ts",
+    "server/infrastructure/reminders/migrations/003_glucose_completion_idempotency.sql",
+    "server/utils/glucoseReminderTransaction.ts",
+    "tests/unit/glucose/glucoseReminderUseCase.test.ts",
+    "tests/integration/glucose/sqliteGlucoseReminderTransaction.test.ts"
+  ],
+  "appliedAt": "2026-11-04T18:34:45.708516+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "e00c88d2-7111-4d34-9dde-a931e0fcfef2",
+    "reference": "user-approved-rem-d-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "ce4a2c1ca2fdd6a602d8c3ab47236ba146c82d3879434375212936877a64f27a",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/glucose/glucoseReminderTransaction.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "1c149094a6d29f06283794f61fb931a3eda141293305d7ec5e85fb3b935acf37",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/application/glucose/recordGlucoseAndCompleteReminder.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "f0645a16d9e92868d46b7027a4f117bc7001cf83303fb0663a3ccad0a45b3c3a",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/glucose/sqliteGlucoseReminderTransaction.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "a6a4a699df64f9981795c21a26dff7895d9c5e00abc7d2dd7b3106d2821a4ef8",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/reminders/migrations/003_glucose_completion_idempotency.sql",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "96288e53a035893f6f37420e23018f3b540f1b5a0765d2d55c135b798f75510f",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/utils/glucoseReminderTransaction.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/4"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "7fa4790aada483d1dac6dca9c1ff3a15122cb42167158cfb69fc3956ccf82909",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/unit/glucose/glucoseReminderUseCase.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/5"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "09cf5ec8cfde24baba9995cab35378162ca451d10eb0f5b362b167033accbe3f",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/integration/glucose/sqliteGlucoseReminderTransaction.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved REM-D scope",
+          "shared/domain/reminders/reminderOccurrence.ts: completeCompatibleGlucoseOccurrence",
+          "contracts/reminders.md: REM-004, REM-006, REM-008, REM-DST-001"
+        ],
+        "protectedBy": {
+          "contract": "REM-D must keep occurrence selection, terminal states, insulin exclusion and SQLite atomicity"
+        },
+        "rollback": null
+      },
+      "staged": "payload/6"
+    }
+  ],
+  "createdAt": "2026-11-04T18:34:32.215770+00:00",
+  "id": "e00c88d2-7111-4d34-9dde-a931e0fcfef2",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:34:37.534001+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "shared/application/glucose/glucoseReminderTransaction.ts",
+      "shared/application/glucose/recordGlucoseAndCompleteReminder.ts",
+      "server/infrastructure/glucose/sqliteGlucoseReminderTransaction.ts",
+      "server/infrastructure/reminders/migrations/003_glucose_completion_idempotency.sql",
+      "server/utils/glucoseReminderTransaction.ts",
+      "tests/unit/glucose/glucoseReminderUseCase.test.ts",
+      "tests/integration/glucose/sqliteGlucoseReminderTransaction.test.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

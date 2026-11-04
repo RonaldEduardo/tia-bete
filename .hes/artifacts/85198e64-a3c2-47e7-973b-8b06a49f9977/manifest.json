@@ -1,0 +1,57 @@
+{
+  "applied": [
+    "tests/e2e/reminders.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:52:04.671503+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "85198e64-a3c2-47e7-973b-8b06a49f9977",
+    "reference": "user-approved-insulin-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "b2338c217e7b49014b1a66bb1e0ecf191f4a3c85aa09267e0d31a118e4f66cd5",
+      "contentSha256": "722da8476e222096a5bec8dfafd6d7478ac062908142515f50cad472d8c7fc37",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/reminders.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "Playwright execution: assertion sampled reminder list before asynchronous creation refreshed it"
+        ],
+        "protectedBy": {
+          "contract": "E2E verifies exactly one compatible glucose occurrence is completed"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T18:51:56.968086+00:00",
+  "id": "85198e64-a3c2-47e7-973b-8b06a49f9977",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:52:04.610712+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/e2e/reminders.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

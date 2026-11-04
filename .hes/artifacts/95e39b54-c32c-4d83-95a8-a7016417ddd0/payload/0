@@ -1,0 +1,27 @@
+# GLU-REC-001 — Registro temporário de glicemia
+
+- **Revisão:** 1
+- **Governança:** APPROVED
+- **Entrega:** TESTED
+- **Fonte funcional:** `tia-bete-mvp/README.md` §§ 3, 4 e H01
+
+## Regra
+
+Uma leitura possui identificador próprio, `occurredAt` em UTC/ISO 8601, `createdAt` em UTC/ISO 8601 e `timeZone` IANA. A data/hora local informada é convertida para um único instante UTC. Horários inexistentes ou ambíguos em DST são rejeitados; nunca são normalizados silenciosamente.
+
+O repositório em memória representa somente a aba atual. Seus registros são perdidos ao recarregar. O histórico é ordenado por `occurredAt` decrescente, depois `createdAt` e `id`, ambos decrescentes.
+
+## Exemplos sintéticos
+
+| Entrada local | Timezone | Resultado esperado |
+| --- | --- | --- |
+| `2026-11-04 08:30` | `America/Sao_Paulo` | `occurredAt = 2026-11-04T11:30:00.000Z` |
+| `2026-03-08 02:30` | `America/New_York` | Rejeitar: horário inexistente |
+| `2026-11-01 01:30` | `America/New_York` | Rejeitar: horário ambíguo |
+
+## Rastreabilidade
+
+- Domínio: `tests/unit/glucose/validateGlucoseReading.test.ts` (instante UTC, DST, timezone inválido e salto de dia)
+- Aplicação: `tests/unit/glucose/glucoseUseCases.test.ts`
+- Matriz: H01
+- Cobertura de qualidade: `tests/unit/glucose/validateGlucoseReading.test.ts`; `npm run test:unit` (3 arquivos, 10 testes PASS), `npm run typecheck` (PASS) e `npm run build` (PASS), executados manualmente no host em 2026-11-04.

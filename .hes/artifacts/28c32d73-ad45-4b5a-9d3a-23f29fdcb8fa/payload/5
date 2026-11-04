@@ -1,0 +1,14 @@
+import type { GlucoseReading } from '../../domain/glucose/glucoseReading'
+import type { GlucoseReadingRepository } from '../../application/glucose/glucoseReadingRepository'
+
+export class MemoryGlucoseReadingRepository implements GlucoseReadingRepository {
+  private readonly readings: GlucoseReading[] = []
+
+  save(reading: GlucoseReading) {
+    this.readings.push(reading)
+  }
+
+  list() {
+    return [...this.readings]
+  }
+}

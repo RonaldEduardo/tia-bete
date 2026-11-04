@@ -1,0 +1,183 @@
+{
+  "applied": [
+    "shared/domain/foods/meal.ts",
+    "app/components/FoodMealsSection.vue",
+    "server/api/foods/index.get.ts",
+    "server/api/foods/index.post.ts",
+    "server/api/meals/index.get.ts",
+    "server/api/meals/[id].get.ts",
+    "server/api/meals/index.post.ts"
+  ],
+  "appliedAt": "2026-11-04T19:11:03.326123+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "8444dc71-9ef8-4fe2-8b52-8e97fae0d980",
+    "reference": "food-001-corrections-authorized",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "caa2c1179e78db0f644f26ba364769cfdf0d5d451a21e4624b1bf3a5bcaeca83",
+      "contentSha256": "8300ce0f574a358a5652ed1076e15a1b2b7738934d27356ff4d97a64791d8f48",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/domain/foods/meal.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "900dac5f663ae9530d593f7847b6801062abac9947ac9c999be9614404b32f96",
+      "contentSha256": "33c4ca4fd063c0fa794dfd66e0426834e6f3ad759547b4a8183613ec8bdf7506",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/components/FoodMealsSection.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "53d21b2d8959d4149b03714c51dc14ca19d463ab83054e299cf65ea35bef82b0",
+      "contentSha256": "46eaa584e9f6aed48925892ff33b21bdc5a8b4f39400107a260565496b987b1b",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/foods/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "ec947ad99c2e89671eea970f2096506d68e0dce7ce1ad5aa2d9188b1758f9dd8",
+      "contentSha256": "e8080a8c418f3301e35e9991247622f67d2231023e70cefc8eef7814367fc604",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/foods/index.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "ae57a91315fc17a53bf1fac25ba910df4774ccb071dc5e4bb3da48eb7f9359bc",
+      "contentSha256": "d756e0d5359a6ff47acef2720f5df3182eccf68f738d1c534c14eb69ccdbc438",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/meals/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/4"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "97d1e01c2d3d1caf54e6235a9bb84e000cc55601a3cf12bb681871ec43d02baf",
+      "contentSha256": "7e7cbe0b95c650306f461f8d67b8613634a387ed99990e979c78f5bd497d7d40",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/meals/[id].get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/5"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "b19af88678bb0ce48529968f4d2f023d4679109f2e7c152a3004ad57a23fd572",
+      "contentSha256": "d320981f6eed0f1c5e1e5643d879b5c44f1d4da781436dd748d56afb2d95ed63",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/meals/index.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "typecheck failures after FOOD-001 APPLY"
+        ],
+        "protectedBy": {
+          "contract": "No semantic change"
+        },
+        "rollback": null
+      },
+      "staged": "payload/6"
+    }
+  ],
+  "createdAt": "2026-11-04T19:10:57.385998+00:00",
+  "id": "8444dc71-9ef8-4fe2-8b52-8e97fae0d980",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T19:11:03.271490+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "shared/domain/foods/meal.ts",
+      "app/components/FoodMealsSection.vue",
+      "server/api/foods/index.get.ts",
+      "server/api/foods/index.post.ts",
+      "server/api/meals/index.get.ts",
+      "server/api/meals/[[]id].get.ts",
+      "server/api/meals/index.post.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

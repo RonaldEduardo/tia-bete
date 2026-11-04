@@ -1,0 +1,43 @@
+{
+  "applied": [],
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "e0ba19116aec6fc108130b00265c558707a84a1310915d089047adb65168bc40",
+      "contentSha256": "abacbbb1d5d9f4a69438b33e9ecc5cef4b5a9b8a2a80584f43154a86ae379a06",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/infrastructure/foods/sqliteFoodMealRepositories.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "server/infrastructure/foods/migrations/005_create_foods_meals.sql: meal_items has six columns",
+          "tests/integration/foods/sqliteFoodMealRepositories.test.ts: snapshot persistence failure"
+        ],
+        "protectedBy": {
+          "contract": "Meal items must persist with their six schema fields"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T20:26:26.945058+00:00",
+  "id": "b04a2e3a-56e4-4a0a-aff9-4141e6fe8d8d",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T20:26:31.258124+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "server/infrastructure/foods/sqliteFoodMealRepositories.ts"
+    ]
+  },
+  "state": "REVIEWED"
+}

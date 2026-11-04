@@ -1,0 +1,132 @@
+{
+  "applied": [
+    "server/api/reminder-occurrences/ignore.post.ts",
+    "tests/unit/reminders/reminderUseCases.test.ts",
+    "tests/integration/reminders/sqliteReminderRepository.test.ts",
+    "tests/e2e/reminders.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:22:28.762327+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "09c1c759-f82f-4a8e-9f91-0db96631a032",
+    "reference": "user-approved-reminder-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "d097b4401254c7a1d063e8dc608f13e8fac6d00b2cc018895e2377ab35f2f3b0",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/reminder-occurrences/ignore.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "de44626274b7169c880ebdfc2401320a97128a7fef881c7df0baca7ebb1fce98",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/unit/reminders/reminderUseCases.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "301f1a4cd502cae247e3cf68d3cfec7f4159e81aa268be1379a950f2b1243377",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/integration/reminders/sqliteReminderRepository.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "98552313929c2266daae297b48cca47ee5b2254c34b8b19ad9c10cdbd2f30517",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/e2e/reminders.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    }
+  ],
+  "createdAt": "2026-11-04T18:21:47.087928+00:00",
+  "id": "09c1c759-f82f-4a8e-9f91-0db96631a032",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:22:09.363132+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "server/api/reminder-occurrences/ignore.post.ts",
+      "tests/unit/reminders/reminderUseCases.test.ts",
+      "tests/integration/reminders/sqliteReminderRepository.test.ts",
+      "tests/e2e/reminders.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

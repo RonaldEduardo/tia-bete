@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "tests/e2e/reminders.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:37:27.221409+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "2bec89df-0480-41bf-a2ff-92f941258ad9",
+    "reference": "user-approved-rem-d-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "3b6de5f5c91253fe8cd7700debbb4d92e2e44ae0dd7b1e7881572f9b050d9037",
+      "contentSha256": "16c1131669804b67af178d56b6c2b0bd1e14284637c4ad0154a0f77fe34e96f5",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/reminders.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "Playwright failure: persistent serial fixture",
+          "tests/e2e/reminders.spec.ts: visibility refresh scenario"
+        ],
+        "protectedBy": {
+          "contract": "E2E scenario isolation must not retain a due occurrence for later tests"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T18:37:21.898232+00:00",
+  "id": "2bec89df-0480-41bf-a2ff-92f941258ad9",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:37:27.166534+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/e2e/reminders.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

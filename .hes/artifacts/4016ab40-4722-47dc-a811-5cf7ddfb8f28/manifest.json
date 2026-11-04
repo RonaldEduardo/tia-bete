@@ -1,0 +1,86 @@
+{
+  "applied": [
+    "contracts/reminders.md",
+    "harness/traceability-matrix.md"
+  ],
+  "appliedAt": "2026-11-04T18:25:26.502182+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "4016ab40-4722-47dc-a811-5cf7ddfb8f28",
+    "reference": "user-approved-reminder-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "14538e52b815dca435136f41cce64b02ff51d7704cb7eb324e9e90c57638fdb5",
+      "contentSha256": "e229bfb37fd92af6b9d5a3afa6aadfc008913c1aa16c99293fbc1086005d3b7a",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "contracts/reminders.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run test:unit: 24/24 PASS",
+          "npm run typecheck: PASS",
+          "npm run build: PASS",
+          "npm run test:isolated: PASS",
+          "npm run test:e2e: 6/6 PASS"
+        ],
+        "protectedBy": {
+          "contract": "HES evidence must distinguish manual executed validation from VERIFIED"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "89dd6324c9308f117edd8f1b43a8b01dc70a46c13040597c1e572a3a33cdc586",
+      "contentSha256": "cea488228e51e9969990ecbdb7e0e78cc0457cf0235e51ef68d1fb0f812848ae",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "harness/traceability-matrix.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run test:unit: 24/24 PASS",
+          "npm run typecheck: PASS",
+          "npm run build: PASS",
+          "npm run test:isolated: PASS",
+          "npm run test:e2e: 6/6 PASS"
+        ],
+        "protectedBy": {
+          "contract": "HES evidence must distinguish manual executed validation from VERIFIED"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    }
+  ],
+  "createdAt": "2026-11-04T18:25:07.324485+00:00",
+  "id": "4016ab40-4722-47dc-a811-5cf7ddfb8f28",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:25:15.541085+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "contracts/reminders.md",
+      "harness/traceability-matrix.md"
+    ]
+  },
+  "state": "APPLIED"
+}

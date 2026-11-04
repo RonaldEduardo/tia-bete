@@ -1,0 +1,13 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  compatibilityDate: '2025-07-15',
+  devtools: { enabled: true },
+  css: ['~/assets/css/main.css'],
+  nitro: {
+    serverAssets: [
+      { baseName: 'migrations', dir: 'server/infrastructure/glucose/migrations' },
+      { baseName: 'reminder-migrations', dir: 'server/infrastructure/reminders/migrations' },
+      { baseName: 'insulin-migrations', dir: 'server/infrastructure/insulin/migrations' }, { baseName: 'food-migrations', dir: 'server/infrastructure/foods/migrations' }
+    ]
+  }
+})

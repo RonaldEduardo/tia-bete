@@ -1,0 +1,20 @@
+import { createGlucoseReading, type CreateGlucoseReadingResult } from '../../domain/glucose/glucoseReading'
+import type { GlucoseReadingInput } from '../../domain/glucose/validateGlucoseReading'
+import type { GlucoseReadingRepository } from './glucoseReadingRepository'
+
+type RecordDependencies = {
+  now: () => string
+  createId: () => string
+}
+
+export const recordGlucoseReading = (
+  input: GlucoseReadingInput,
+  repository: GlucoseReadingRepository,
+  dependencies: RecordDependencies
+): CreateGlucoseReadingResult => {
+  const result = createGlucoseReading({ ...input, id: dependencies.createId(), createdAt: dependencies.now() })
+  if ('errors' in result) return result
+
+  repository.save(result.reading)
+  return result
+}

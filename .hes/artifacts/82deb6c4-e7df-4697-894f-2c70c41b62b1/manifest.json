@@ -1,0 +1,49 @@
+{
+  "applied": [],
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "3f2813bfaa11308579a6fcabecf0cc8edecc4f7df96a2f72c5c70847d2f1cfbc",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/reminders/index.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T18:20:13.882497+00:00",
+  "id": "82deb6c4-e7df-4697-894f-2c70c41b62b1",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": null,
+    "state": "PENDING"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "server/api/reminders/index.get.ts"
+    ]
+  },
+  "state": "STAGED"
+}

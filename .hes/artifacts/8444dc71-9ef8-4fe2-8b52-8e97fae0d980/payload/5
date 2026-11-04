@@ -1,0 +1,1 @@
+import{createError,getRouterParam}from'h3';import{getMealRepository}from'../../utils/foodMealRepositories';export default defineEventHandler(async e=>{const meal=await await getMealRepository().find(getRouterParam(e,'id')||'');if(!meal)throw createError({statusCode:404});return meal})

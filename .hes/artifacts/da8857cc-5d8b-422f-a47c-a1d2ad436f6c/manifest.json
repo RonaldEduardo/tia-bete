@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "tests/e2e/reminders.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:51:06.819088+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "da8857cc-5d8b-422f-a47c-a1d2ad436f6c",
+    "reference": "user-approved-insulin-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "92cca7b7a3a967e946f5a822735af772bb873cee0eefd155e7520ef8acc8528d",
+      "contentSha256": "b2338c217e7b49014b1a66bb1e0ecf191f4a3c85aa09267e0d31a118e4f66cd5",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/reminders.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "Playwright evidence: another valid due reminder remained after glucose completed one occurrence",
+          "REM-006: glucose concludes at most one compatible occurrence"
+        ],
+        "protectedBy": {
+          "contract": "REM-006 completion cardinality"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T18:51:00.492009+00:00",
+  "id": "da8857cc-5d8b-422f-a47c-a1d2ad436f6c",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:51:06.746166+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/e2e/reminders.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

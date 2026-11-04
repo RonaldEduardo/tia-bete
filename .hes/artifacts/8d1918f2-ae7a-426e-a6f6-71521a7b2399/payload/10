@@ -1,0 +1,1 @@
+import{listMeals}from'../../../../shared/application/foods/useCases';import{getMealRepository}from'../../../utils/foodMealRepositories';export default defineEventHandler(()=>listMeals(await getMealRepository()))

@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "shared/domain/glucose/validateGlucoseReading.ts"
+  ],
+  "appliedAt": "2026-11-04T14:34:53.460781+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "e2115f2a-5cbb-44b6-b40b-29fa573efa9f",
+    "reference": "user-approved-glu-rec-001-type-correction-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "74005308282de5af213d9ab6bb8143d54030acfc97a67db7b83c363aaaa73504",
+      "contentSha256": "04aec829f071f17daeab527a6bfd0271b2b55ffd80c0afd9d3417b19d20d792d",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/domain/glucose/validateGlucoseReading.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "shared/domain/glucose/validateGlucoseReading.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "finding:TYPE_INSPECTION:shared/domain/glucose/glucoseReading.ts"
+        ],
+        "protectedBy": {
+          "risk": "entity validation errors must represent required ID and createdAt invariants"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T14:34:45.773320+00:00",
+  "id": "e2115f2a-5cbb-44b6-b40b-29fa573efa9f",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:34:53.408536+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "shared/domain/glucose/validateGlucoseReading.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

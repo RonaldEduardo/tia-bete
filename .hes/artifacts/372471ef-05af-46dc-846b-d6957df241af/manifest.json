@@ -1,0 +1,132 @@
+{
+  "applied": [
+    "app/app.vue",
+    "app/components/AppBottomNavigation.vue",
+    "app/assets/css/main.css",
+    "nuxt.config.ts"
+  ],
+  "appliedAt": "2026-11-04T18:22:28.780222+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "372471ef-05af-46dc-846b-d6957df241af",
+    "reference": "user-approved-reminder-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "c2bc64b900656c3c501e15057af10166d557a89ea92f4106473b98778baf417a",
+      "contentSha256": "66db9d813973c88f1d1a48598214e77a20283ff095910233b660ca54d44f9b44",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "99b26e0a17daaa513b0b43e1183686ecd14a1685913b812da3ee979a0441d57d",
+      "contentSha256": "2fd33810738113eed5cf69c99ce7857fa9f8a09a5afc8b617577fbcb3556af46",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/components/AppBottomNavigation.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "2b0670eef8816e40e3626c865e11e6809417009886c260973a7b56c5331b2bbf",
+      "contentSha256": "5049261909b777982b03ba5e5a447b149d766dc6f4bcaaa267b4644c67b82b5b",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/assets/css/main.css",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "e81a03f5a8357540b382fe8fef317dfbb9a473628b7c95e5b90ea140237cbd7d",
+      "contentSha256": "1f42882aec6467f138de2c6bfc20bb88effd0902e8d0da3dd1484f415fac18c2",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "nuxt.config.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "User-approved Reminder Vertical Slice 2026-11-04",
+          "contracts/reminders.md: REM-001 through REM-008 and REM-DST-001",
+          "shared/domain/reminders/reminder.ts",
+          "shared/domain/reminders/reminderOccurrence.ts"
+        ],
+        "protectedBy": {
+          "contract": "REM-001 through REM-008 and REM-DST-001"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    }
+  ],
+  "createdAt": "2026-11-04T18:21:53.499416+00:00",
+  "id": "372471ef-05af-46dc-846b-d6957df241af",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:22:09.382966+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "app/app.vue",
+      "app/components/AppBottomNavigation.vue",
+      "app/assets/css/main.css",
+      "nuxt.config.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

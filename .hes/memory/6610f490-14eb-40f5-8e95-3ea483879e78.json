@@ -1,0 +1,46 @@
+{
+  "id": "6610f490-14eb-40f5-8e95-3ea483879e78",
+  "integrity": "a6d5a744d67864fd8ec8cac4c38c87809443afcfd0767cb3c72d05a904208317",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "tests/e2e/reminders.spec.ts",
+      "server/api/glucose/readings.post.ts",
+      "shared/domain/reminders/reminderOccurrence.ts"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T18:36:26.396389+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "tests/e2e/reminders.spec.ts",
+          "purpose": "Cobrir o fluxo visual de conclus\u00e3o autom\u00e1tica REM-006."
+        }
+      ],
+      "evidence": [
+        "tests/e2e/reminders.spec.ts",
+        "server/api/glucose/readings.post.ts",
+        "shared/domain/reminders/reminderOccurrence.ts"
+      ],
+      "limitations": [
+        "N\u00e3o cobre app fechado ou transporte de notifica\u00e7\u00e3o."
+      ],
+      "objective": "Adicionar ao smoke Playwright REM-D a prova visual de registrar pelo lembrete e concluir automaticamente a ocorr\u00eancia compat\u00edvel.",
+      "riskProtected": "Aumenta evid\u00eancia do comportamento aprovado sem alterar c\u00f3digo produtivo ou regras cl\u00ednicas.",
+      "validation": {
+        "execution": "Manual local; HES n\u00e3o ser\u00e1 marcado VERIFIED.",
+        "strategy": "Executar test:e2e ap\u00f3s aplicar."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

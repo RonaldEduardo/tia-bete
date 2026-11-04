@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "shared/domain/glucose/validateGlucoseReading.ts"
+  ],
+  "appliedAt": "2026-11-04T14:42:29.179275+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "93447c6b-157d-4ef2-882c-1f71a88d6d05",
+    "reference": "user-approved-quality-gates-type-correction-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "04aec829f071f17daeab527a6bfd0271b2b55ffd80c0afd9d3417b19d20d792d",
+      "contentSha256": "39e747787a2c68e0073dd9044d11af0dbf4dffc2d49a0ccdcafe5f7679271c93",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/domain/glucose/validateGlucoseReading.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "shared/domain/glucose/validateGlucoseReading.ts:21-25",
+          "shared/domain/glucose/validateGlucoseReading.ts:56-70",
+          "npm run typecheck output 2026-11-04"
+        ],
+        "protectedBy": {
+          "risk": "typecheck must prove indexed parsed date/time values are defined without weakening the resolver contract"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T14:42:22.622648+00:00",
+  "id": "93447c6b-157d-4ef2-882c-1f71a88d6d05",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:42:29.115313+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "shared/domain/glucose/validateGlucoseReading.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

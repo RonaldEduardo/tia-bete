@@ -1,0 +1,48 @@
+import { expect, test, type Page } from '@playwright/test'
+
+const loadHome = async (page: Page) => {
+  const occurrences = page.waitForResponse(response => response.url().endsWith('/api/reminder-occurrences') && response.request().method() === 'GET')
+  await page.goto('/')
+  await occurrences
+}
+
+const createDueReminder = async (page: Page) => {
+  const now = new Date()
+  const time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+  const weekdays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+  await page.getByRole('button', { name: 'Criar lembrete' }).first().click()
+  await page.locator('#reminder-time').fill(time)
+  await page.getByRole('checkbox', { name: weekdays[now.getDay()]! }).check()
+  await page.getByRole('button', { name: 'Criar lembrete' }).last().click()
+}
+
+test.describe.serial('REM-SMOKE-001', () => {
+  test('cria lembrete, preserva após reload e adia uma pendência', async ({ page }) => {
+    await loadHome(page)
+    await createDueReminder(page)
+    await expect(page.getByText('Lembrete criado e salvo neste ambiente local.')).toBeVisible()
+    await expect(page.getByText('Medir glicemia').first()).toBeVisible()
+    await page.reload()
+    await expect(page.getByText('Medir glicemia').first()).toBeVisible()
+    await page.getByRole('button', { name: 'Registrar' }).last().click()
+    await expect(page.locator('#glucose-form-title')).toBeVisible()
+    await page.getByRole('button', { name: 'Cancelar' }).last().click()
+    await page.getByRole('button', { name: 'Adiar 10 min' }).last().click()
+    await expect(page.getByText('Lembrete adiado por 10 minutos.')).toBeVisible()
+    await expect(page.getByText('Adiado').last()).toBeVisible()
+  })
+
+  test('permite ignorar explicitamente uma pendência', async ({ page }) => {
+    await loadHome(page)
+    await createDueReminder(page)
+    await page.getByRole('button', { name: 'Ignorar' }).last().click()
+    await expect(page.getByText('Lembrete ignorado explicitamente.')).toBeVisible()
+  })
+  test('reavalia lembretes quando a aba volta a ficar visível', async ({ page }) => {
+    await loadHome(page)
+    await createDueReminder(page)
+    await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
+    await expect(page.getByRole('status').filter({ hasText: 'Lembrete ativo' })).toBeVisible()
+  })
+
+})

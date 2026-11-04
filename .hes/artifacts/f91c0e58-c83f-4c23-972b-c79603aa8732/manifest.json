@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "tests/unit/glucose/glucoseReminderUseCase.test.ts"
+  ],
+  "appliedAt": "2026-11-04T18:35:49.140012+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "f91c0e58-c83f-4c23-972b-c79603aa8732",
+    "reference": "user-approved-rem-d-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "7fa4790aada483d1dac6dca9c1ff3a15122cb42167158cfb69fc3956ccf82909",
+      "contentSha256": "9455504a687db3554704906834f5ffc4a52c4be5c106cae4722aad78627d09d9",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/unit/glucose/glucoseReminderUseCase.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "npm run test:unit failure: shared mutable fixture",
+          "shared/domain/reminders/reminderOccurrence.ts: REM-006 selection"
+        ],
+        "protectedBy": {
+          "contract": "Test fixtures must independently prove REM-006 and rollback behavior"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T18:35:43.597072+00:00",
+  "id": "f91c0e58-c83f-4c23-972b-c79603aa8732",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:35:49.084009+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/unit/glucose/glucoseReminderUseCase.test.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

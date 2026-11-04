@@ -1,0 +1,18 @@
+export type GlucoseReadingForm = {
+  value: string
+  date: string
+  time: string
+}
+
+export type GlucoseReadingErrors = Partial<Record<keyof GlucoseReadingForm, string>>
+
+export const validateGlucoseReading = ({ value, date, time }: GlucoseReadingForm): GlucoseReadingErrors => {
+  const errors: GlucoseReadingErrors = {}
+
+  if (!value.trim()) errors.value = 'Informe o valor da glicemia.'
+  else if (!Number.isFinite(Number(value)) || Number(value) <= 0) errors.value = 'Informe um valor positivo.'
+  if (!date) errors.date = 'Informe a data.'
+  if (!time) errors.time = 'Informe o horário.'
+
+  return errors
+}

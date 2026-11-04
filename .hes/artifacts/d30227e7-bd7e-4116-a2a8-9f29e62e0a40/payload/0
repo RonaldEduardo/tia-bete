@@ -1,0 +1,28 @@
+{
+  "name": "tia-bete",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --host 127.0.0.1",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview --host 127.0.0.1",
+    "postinstall": "nuxt prepare",
+    "test:unit": "vitest run --exclude tests/e2e/**",
+    "typecheck": "nuxt typecheck",
+    "test:e2e": "playwright test",
+    "test:isolated": "node scripts/test-isolated-build.mjs"
+  },
+  "dependencies": {
+    "nuxt": "^4.6.4",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vitest": "4.0.18",
+    "vue-tsc": "3.1.4",
+    "@types/node": "24.19.2",
+    "@playwright/test": "1.58.2"
+  }
+}

@@ -1,0 +1,180 @@
+<script setup lang="ts">
+import { onMounted, reactive, ref } from 'vue'
+
+import type { GlucoseReading } from '~~/shared/domain/glucose/glucoseReading'
+import type { GlucoseReadingValidationCode, GlucoseReadingValidationErrors } from '~~/shared/domain/glucose/validateGlucoseReading'
+const showForm = ref(false)
+const errors = ref<Record<string, string>>({})
+const persistenceError = ref('')
+const submitted = ref(false)
+const timeZone = ref('UTC')
+const history = ref<GlucoseReading[]>([])
+const form = reactive({ value: '', date: '', time: '', context: '' })
+
+const validationMessages: Record<GlucoseReadingValidationCode, string> = {
+  required: 'Informe este campo.',
+  invalid: 'Informe um valor válido.',
+  'invalid-time-zone': 'O fuso horário do navegador não é válido.',
+  'nonexistent-local-time': 'Este horário não existe no fuso atual.',
+  'ambiguous-local-time': 'Este horário é ambíguo no fuso atual.'
+}
+
+const setCurrentDateTime = () => {
+  const now = new Date()
+  form.date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  form.time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+}
+
+const toUiErrors = (domainErrors: GlucoseReadingValidationErrors) => Object.fromEntries(
+  Object.entries(domainErrors).map(([field, code]) => [field === 'localDateTime' ? 'time' : field, validationMessages[code]])
+)
+
+const formatOccurredAt = (reading: GlucoseReading) => new Intl.DateTimeFormat('pt-BR', {
+  dateStyle: 'short', timeStyle: 'short', timeZone: reading.timeZone
+}).format(new Date(reading.occurredAt))
+
+const contextLabels: Record<string, string> = {
+  fasting: 'Em jejum',
+  pre_meal: 'Antes da refeição',
+  post_meal: 'Após a refeição',
+  bedtime: 'Ao deitar',
+  other: 'Outro'
+}
+
+const openForm = () => {
+  showForm.value = true
+  submitted.value = false
+  errors.value = {}
+}
+
+const loadHistory = async () => {
+  try {
+    history.value = await $fetch<GlucoseReading[]>('/api/glucose/readings')
+  } catch {
+    persistenceError.value = 'Não foi possível carregar os registros locais.'
+  }
+}
+
+const submit = async () => {
+  submitted.value = true
+  errors.value = {}
+  persistenceError.value = ''
+
+  try {
+    await $fetch<GlucoseReading>('/api/glucose/readings', {
+      method: 'POST',
+      body: { ...form, value: String(form.value), timeZone: timeZone.value, context: form.context || undefined }
+    })
+  } catch (error: unknown) {
+    const response = error as { data?: { errors?: GlucoseReadingValidationErrors } }
+    if (response.data?.errors) errors.value = toUiErrors(response.data.errors)
+    else persistenceError.value = 'Não foi possível salvar o registro local. Tente novamente.'
+    return
+  }
+
+  await loadHistory()
+  showForm.value = false
+}
+
+onMounted(async () => {
+  timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+  setCurrentDateTime()
+  await loadHistory()
+})
+</script>
+
+<template>
+  <main id="hoje" class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">TIA-BETE</p>
+        <h1>Hoje</h1>
+      </div>
+      <StatusIndicator tone="warning">Dados locais</StatusIndicator>
+    </header>
+
+    <AppCard class="day-summary">
+      <p class="eyebrow">Resumo do dia</p>
+      <h2>Comece com um registro</h2>
+      <p>Esta demonstração não usa dados clínicos reais. Registros são salvos somente neste ambiente local.</p>
+      <AppButton @click="openForm">Registrar glicemia</AppButton>
+    </AppCard>
+
+    <section class="content-grid" aria-label="Resumo da sessão">
+      <AppCard>
+        <p class="eyebrow">Último registro</p>
+        <template v-if="history[0]">
+          <h2>{{ history[0].glucoseMgDl }} mg/dL</h2>
+          <p>{{ formatOccurredAt(history[0]) }}<span v-if="history[0].context"> · {{ contextLabels[history[0].context] }}</span></p>
+          <StatusIndicator tone="warning">Local: permanece neste ambiente após recarregar.</StatusIndicator>
+        </template>
+        <template v-else>
+          <h2>Nenhum registro nesta sessão</h2>
+          <p>Use apenas dados de demonstração até existir armazenamento protegido.</p>
+        </template>
+      </AppCard>
+
+      <AppCard>
+        <p class="eyebrow">Próximo lembrete</p>
+        <h2>Nenhum lembrete agendado</h2>
+        <p>Lembretes serão desenvolvidos e testados localmente em outro incremento.</p>
+      </AppCard>
+    </section>
+
+    <AppCard v-if="history.length" class="history-card">
+      <p class="eyebrow">Histórico desta sessão</p>
+      <ol class="history-list">
+        <li v-for="reading in history" :key="reading.id">
+          <strong>{{ reading.glucoseMgDl }} mg/dL</strong>
+          <span>{{ formatOccurredAt(reading) }}</span>
+        </li>
+      </ol>
+    </AppCard>
+
+    <StatusIndicator v-if="persistenceError" tone="warning">{{ persistenceError }}</StatusIndicator>
+
+    <section v-if="showForm" class="form-panel" aria-labelledby="glucose-form-title">
+      <div class="form-panel__heading">
+        <div>
+          <p class="eyebrow">Registro local</p>
+          <h2 id="glucose-form-title">Registrar glicemia</h2>
+        </div>
+        <AppButton variant="secondary" @click="showForm = false">Cancelar</AppButton>
+      </div>
+
+      <StatusIndicator tone="warning">Use somente dados de demonstração. O registro será salvo apenas neste ambiente local.</StatusIndicator>
+
+      <form novalidate @submit.prevent="submit">
+        <AppInput
+          id="glucose-value"
+          v-model="form.value"
+          label="Valor"
+          type="number"
+          inputmode="decimal"
+          min="0"
+          placeholder="Ex.: 120"
+          :error="submitted ? errors.value : ''"
+          hint="Em mg/dL"
+        />
+        <div class="form-grid">
+          <AppInput id="glucose-date" v-model="form.date" label="Data" type="date" :error="submitted ? errors.date : ''" />
+          <AppInput id="glucose-time" v-model="form.time" label="Horário" type="time" :error="submitted ? errors.time : ''" />
+        </div>
+        <div class="app-field">
+          <label for="glucose-context">Contexto opcional</label>
+          <select id="glucose-context" v-model="form.context">
+            <option value="">Não informado</option>
+            <option value="fasting">Em jejum</option>
+            <option value="pre_meal">Antes da refeição</option>
+            <option value="post_meal">Após a refeição</option>
+            <option value="bedtime">Ao deitar</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+        <AppButton type="submit">Salvar registro local</AppButton>
+      </form>
+    </section>
+  </main>
+
+  <AppBottomNavigation />
+</template>

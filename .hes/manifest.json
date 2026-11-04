@@ -1,0 +1,21 @@
+{
+  "contractRegistryVersion": "1",
+  "detectedStack": [],
+  "evidencePolicy": {
+    "payloadStore": "LOCAL_ONLY",
+    "retentionDays": 7
+  },
+  "handoffVersion": "1",
+  "initializedAt": "2026-11-04T13:22:02.413113+00:00",
+  "policyVersion": "1",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "projectRoot": "/home/ronald_gustmann/Documentos/dev/tia-bete",
+  "runnerAdapters": [],
+  "schemaVersion": "2",
+  "state": "UNVERIFIED",
+  "stateVersion": "2",
+  "supportedCapabilities": [
+    "DISCOVER"
+  ],
+  "updatedAt": "2026-11-04T13:22:02.413113+00:00"
+}

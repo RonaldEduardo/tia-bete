@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "harness/traceability-matrix.md"
+  ],
+  "appliedAt": "2026-11-04T18:53:54.372445+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "b76fffc6-9076-42e7-a184-a8d4544a73bb",
+    "reference": "user-approved-insulin-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "9a9014b47c1d970d2782b633e5a57c6aba31f63e0bd58a7aeab8b28ef34aa68e",
+      "contentSha256": "57ee97b7072aaf8a9feb79816d73a64c3e41b2225c9233b6ba1642c03547f00a",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "harness/traceability-matrix.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "Local gates executed 2026-11-04",
+          "User Git safety requirement"
+        ],
+        "protectedBy": {
+          "contract": "No claim of HES VERIFIED from local execution"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T18:53:43.744041+00:00",
+  "id": "b76fffc6-9076-42e7-a184-a8d4544a73bb",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:53:54.316591+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "harness/traceability-matrix.md"
+    ]
+  },
+  "state": "APPLIED"
+}

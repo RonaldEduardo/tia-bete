@@ -1,0 +1,40 @@
+{
+  "id": "1c7fbeb5-65c8-482c-a15e-7cb8f5c51f2f",
+  "integrity": "6bbbe2bf08fcff69332accc6462f23e84d3c9ca4503b522f8022d84965380896",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "app/app.vue"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T17:32:30.883983+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "app/app.vue",
+          "purpose": "noop"
+        }
+      ],
+      "evidence": [
+        "app/app.vue"
+      ],
+      "limitations": [],
+      "objective": "noop",
+      "riskProtected": "noop",
+      "validation": {
+        "execution": "noop",
+        "strategy": "noop"
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

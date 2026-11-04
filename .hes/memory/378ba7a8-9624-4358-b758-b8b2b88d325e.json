@@ -1,0 +1,50 @@
+{
+  "id": "378ba7a8-9624-4358-b758-b8b2b88d325e",
+  "integrity": "d5871cd0e2e1fac63e47835e53023b095d36de5fc1b7849b29c72c8da0911fd9",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "contracts/reminders.md",
+      "harness/traceability-matrix.md",
+      "tests/unit/reminders/reminder.test.ts"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T18:00:12.989710+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "contracts/reminders.md",
+          "purpose": "Promover REM-A para TESTED e registrar comandos aprovados."
+        },
+        {
+          "path": "harness/traceability-matrix.md",
+          "purpose": "Promover cen\u00e1rios de dom\u00ednio REM-A para TESTED, preservando H07 como planejado."
+        }
+      ],
+      "evidence": [
+        "contracts/reminders.md",
+        "harness/traceability-matrix.md",
+        "tests/unit/reminders/reminder.test.ts"
+      ],
+      "limitations": [
+        "SQLite, scheduler, claims, leases, transporte e Vue continuam fora do REM-A."
+      ],
+      "objective": "Registrar as evid\u00eancias reais de REM-A ap\u00f3s testes, typecheck e build, preservando os limites de escopo pendentes.",
+      "riskProtected": "Contratos e matriz n\u00e3o podem declarar REM-A apenas implementado ap\u00f3s valida\u00e7\u00e3o real nem afirmar HES VERIFIED sem evid\u00eancia suportada.",
+      "validation": {
+        "execution": "Evid\u00eancia executada manualmente no host; HES AUDIT e LOCAL_TRUSTED continuam n\u00e3o verificados.",
+        "strategy": "Revisar o diff de evid\u00eancias e registrar checkpoint HES ap\u00f3s APPLY."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

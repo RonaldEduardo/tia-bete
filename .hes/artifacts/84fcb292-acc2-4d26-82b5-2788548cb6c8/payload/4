@@ -1,0 +1,28 @@
+import { createError, readBody } from 'h3'
+
+import { recordGlucoseReading } from '../../../shared/application/glucose/recordGlucoseReading'
+import type { GlucoseReadingInput } from '../../../shared/domain/glucose/validateGlucoseReading'
+import { getGlucoseRepository } from '../../utils/glucoseRepository'
+
+const toInput = (body: unknown): GlucoseReadingInput => {
+  const input = body && typeof body === 'object' ? body as Record<string, unknown> : {}
+  return {
+    value: typeof input.value === 'string' ? input.value : '',
+    date: typeof input.date === 'string' ? input.date : '',
+    time: typeof input.time === 'string' ? input.time : '',
+    timeZone: typeof input.timeZone === 'string' ? input.timeZone : '',
+    context: typeof input.context === 'string' ? input.context : undefined
+  }
+}
+
+export default defineEventHandler(async event => {
+  const result = await recordGlucoseReading(
+    toInput(await readBody(event)),
+    await getGlucoseRepository(),
+    { now: () => new Date().toISOString(), createId: () => crypto.randomUUID() }
+  )
+
+  if ('errors' in result) throw createError({ statusCode: 422, statusMessage: 'Invalid input', message: 'Dados inválidos', data: { errors: result.errors } })
+  if ('error' in result) throw createError({ statusCode: 503, statusMessage: 'Service Unavailable', message: 'Não foi possível salvar o registro local.' })
+  return result.reading
+})

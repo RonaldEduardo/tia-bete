@@ -1,0 +1,59 @@
+{
+  "applied": [
+    "tests/unit/reminders/reminder.test.ts"
+  ],
+  "appliedAt": "2026-11-04T17:59:41.740331+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "6bad1c4a-e414-4c55-ae7c-adc4ecee820e",
+    "reference": "user-approved-rem-a-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "2a65b29620ed2e532b75fab0abdaee9b2f30e513707d25be628590267d1209cf",
+      "contentSha256": "86aad667791339b7810ee26e2309a4a315b50d876fd6340cee145cc5cafd8ebf",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/unit/reminders/reminder.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tests/unit/reminders/reminder.test.ts: failed REM-006 assertion",
+          "shared/domain/reminders/reminderOccurrence.ts: distance ordering",
+          "contracts/reminders.md: REM-006"
+        ],
+        "protectedBy": {
+          "contract": "REM-006 selects the compatible occurrence with minimum temporal distance"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T17:59:34.968837+00:00",
+  "id": "6bad1c4a-e414-4c55-ae7c-adc4ecee820e",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T17:59:35.026084+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/unit/reminders/reminder.test.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

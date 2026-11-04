@@ -1,0 +1,105 @@
+{
+  "id": "ffa18180-2c26-4bd6-bc11-55779caa4166",
+  "integrity": "3f6f0abbcbf03a91c2c2d993827fd7818ca0c1bc735598bda28a039290f61233",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "shared/domain/reminders/reminder.ts",
+      "shared/domain/reminders/reminderOccurrence.ts",
+      "tests/unit/reminders/reminder.test.ts",
+      "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+      "server/api/glucose/readings.post.ts",
+      "app/app.vue",
+      "contracts/reminders.md",
+      "harness/traceability-matrix.md"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T18:12:16.516242+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "shared/application/reminders/",
+          "purpose": "Portas e casos de uso ass\u00edncronos para cria\u00e7\u00e3o, reconcilia\u00e7\u00e3o, consulta, adiamento e ignore."
+        },
+        {
+          "path": "server/infrastructure/reminders/",
+          "purpose": "Adaptador SQLite e migration idempotente para configura\u00e7\u00f5es e ocorr\u00eancias."
+        },
+        {
+          "path": "server/api/reminders/",
+          "purpose": "API m\u00ednima para criar, listar/reconciliar, adiar e ignorar."
+        },
+        {
+          "path": "server/utils/reminderRepository.ts",
+          "purpose": "Instanciar o reposit\u00f3rio local e carregar migration empacotada."
+        },
+        {
+          "path": "app/app.vue",
+          "purpose": "Tela Hoje e se\u00e7\u00e3o Lembretes utiliz\u00e1veis com feedback de carregamento, sucesso e erro."
+        },
+        {
+          "path": "app/components/AppBottomNavigation.vue",
+          "purpose": "Expor navega\u00e7\u00e3o para a se\u00e7\u00e3o Lembretes."
+        },
+        {
+          "path": "app/assets/css/main.css",
+          "purpose": "Estilos mobile-first para o formul\u00e1rio e cards de lembretes."
+        },
+        {
+          "path": "tests/unit/reminders/",
+          "purpose": "Cobrir casos de uso e regras existentes."
+        },
+        {
+          "path": "tests/integration/reminders/",
+          "purpose": "Cobrir SQLite, idempot\u00eancia e restart."
+        },
+        {
+          "path": "tests/e2e/reminders.spec.ts",
+          "purpose": "Smoke real de criar, reload, adiar e ignorar."
+        },
+        {
+          "path": "nuxt.config.ts",
+          "purpose": "Empacotar migrations de lembretes."
+        },
+        {
+          "path": "contracts/reminders.md",
+          "purpose": "Registrar evid\u00eancia do slice sem alegar HES VERIFIED."
+        },
+        {
+          "path": "harness/traceability-matrix.md",
+          "purpose": "Atualizar rastreabilidade dos cen\u00e1rios exercitados."
+        }
+      ],
+      "evidence": [
+        "shared/domain/reminders/reminder.ts",
+        "shared/domain/reminders/reminderOccurrence.ts",
+        "tests/unit/reminders/reminder.test.ts",
+        "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+        "server/api/glucose/readings.post.ts",
+        "app/app.vue",
+        "contracts/reminders.md",
+        "harness/traceability-matrix.md"
+      ],
+      "limitations": [
+        "Sem scheduler, claims, leases, transporte, Web Push, Cron, auth, edi\u00e7\u00e3o de configura\u00e7\u00e3o ou integra\u00e7\u00e3o autom\u00e1tica com glicemia.",
+        "A reconcilia\u00e7\u00e3o ocorre por consulta expl\u00edcita e materializa somente hoje e amanh\u00e3 locais."
+      ],
+      "objective": "Entregar o primeiro vertical slice utiliz\u00e1vel de lembretes de glicemia: criar configura\u00e7\u00e3o, materializar hoje/amanh\u00e3, persistir em SQLite, consultar/reconciliar, adiar, ignorar e operar pela interface Nuxt mobile-first.",
+      "riskProtected": "Preservar REM-001..008 e REM-DST-001: inten\u00e7\u00e3o local e revis\u00e3o imut\u00e1veis, skipped sem instante UTC, idempot\u00eancia, snooze limitado, nenhuma infer\u00eancia cl\u00ednica de insulina, e dom\u00ednio sem Nuxt/HTTP/SQLite.",
+      "validation": {
+        "execution": "Execu\u00e7\u00e3o manual local autorizada; evid\u00eancias HES ser\u00e3o registradas como TESTED e n\u00e3o VERIFIED.",
+        "strategy": "Executar testes unit\u00e1rios e integra\u00e7\u00e3o, Playwright, typecheck, build e build isolada se a altera\u00e7\u00e3o de migrations exigir."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

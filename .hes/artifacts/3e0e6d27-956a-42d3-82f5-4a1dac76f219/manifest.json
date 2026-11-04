@@ -1,0 +1,80 @@
+{
+  "applied": [
+    "tests/e2e/reminders.spec.ts",
+    "tests/e2e/insulin.spec.ts"
+  ],
+  "appliedAt": "2026-11-04T18:50:20.743388+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "3e0e6d27-956a-42d3-82f5-4a1dac76f219",
+    "reference": "user-approved-insulin-vertical-slice-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "16c1131669804b67af178d56b6c2b0bd1e14284637c4ad0154a0f77fe34e96f5",
+      "contentSha256": "92cca7b7a3a967e946f5a822735af772bb873cee0eefd155e7520ef8acc8528d",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/reminders.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "Playwright failure: partial accessible-name selector chose Registrar insulina",
+          "User requirement: insulin must not alter or complete reminders automatically"
+        ],
+        "protectedBy": {
+          "contract": "REM-008: insulin never completes automatically or proves application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "0ebc39fa3ca76cb1d9592a44059f90b390c933aff84eed4dc61108af974beccf",
+      "contentSha256": "b251b8a8cad6658dc8244c2a6c02a3ba589174c437eb983ac58fcfbeb2a471e9",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/e2e/insulin.spec.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "Playwright failure: partial accessible-name selector chose Registrar insulina",
+          "User requirement: insulin must not alter or complete reminders automatically"
+        ],
+        "protectedBy": {
+          "contract": "REM-008: insulin never completes automatically or proves application"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    }
+  ],
+  "createdAt": "2026-11-04T18:50:14.706302+00:00",
+  "id": "3e0e6d27-956a-42d3-82f5-4a1dac76f219",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T18:50:20.688467+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "tests/e2e/reminders.spec.ts",
+      "tests/e2e/insulin.spec.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

@@ -1,0 +1,17 @@
+import { describe, expect, it } from 'vitest'
+
+import { validateGlucoseReading } from '../../../shared/domain/glucose/validateGlucoseReading'
+
+describe('validateGlucoseReading', () => {
+  it('accepts a complete temporary record', () => {
+    expect(validateGlucoseReading({ value: '120', date: '2026-11-04', time: '08:30' })).toEqual({})
+  })
+
+  it('rejects empty or invalid required fields', () => {
+    expect(validateGlucoseReading({ value: '0', date: '', time: '' })).toEqual({
+      value: 'Informe um valor positivo.',
+      date: 'Informe a data.',
+      time: 'Informe o horário.'
+    })
+  })
+})

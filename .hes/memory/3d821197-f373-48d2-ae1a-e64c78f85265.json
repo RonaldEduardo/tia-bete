@@ -1,0 +1,126 @@
+{
+  "id": "3d821197-f373-48d2-ae1a-e64c78f85265",
+  "integrity": "bb29258c1da354933db468771a850cd893fbacb070823d246a8403cf5e671e52",
+  "invalidatedBy": null,
+  "kind": "DECISION",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "provenance": {
+    "evidence": [
+      "shared/domain/reminders/reminder.ts",
+      "shared/domain/reminders/reminderOccurrence.ts",
+      "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+      "app/app.vue",
+      "contracts/reminders.md"
+    ],
+    "source": "agent-proposal"
+  },
+  "recordedAt": "2026-11-04T18:21:15.813228+00:00",
+  "replaces": null,
+  "schemaVersion": "1",
+  "scope": "LOCAL",
+  "value": {
+    "discoveryState": "PARTIAL",
+    "operation": "DESIGN",
+    "proposal": {
+      "artifacts": [
+        {
+          "path": "shared/application/reminders/reminderRepository.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "shared/application/reminders/localDates.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "shared/application/reminders/createLocalReminder.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "shared/application/reminders/reconcileReminderOccurrences.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "shared/application/reminders/actOnReminderOccurrence.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/infrastructure/reminders/migrations/002_create_reminders.sql",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/infrastructure/reminders/sqliteReminderRepository.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/utils/reminderRepository.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/api/reminders/index.post.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/api/reminders/index.get.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/api/reminder-occurrences/index.get.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/api/reminder-occurrences/snooze.post.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "server/api/reminder-occurrences/ignore.post.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "tests/unit/reminders/reminderUseCases.test.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "tests/integration/reminders/sqliteReminderRepository.test.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "tests/e2e/reminders.spec.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "app/app.vue",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "app/components/AppBottomNavigation.vue",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "app/assets/css/main.css",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        },
+        {
+          "path": "nuxt.config.ts",
+          "purpose": "Vertical slice de lembretes conforme escopo aprovado."
+        }
+      ],
+      "evidence": [
+        "shared/domain/reminders/reminder.ts",
+        "shared/domain/reminders/reminderOccurrence.ts",
+        "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+        "app/app.vue",
+        "contracts/reminders.md"
+      ],
+      "limitations": [
+        "Somente hoje e amanh\u00e3 locais; reconcilia\u00e7\u00e3o no GET; sem scheduler/transport/claims/leases/edi\u00e7\u00e3o de configura\u00e7\u00e3o."
+      ],
+      "objective": "Entregar o vertical slice local de lembretes de glicemia aprovado, usando rotas de a\u00e7\u00e3o est\u00e1ticas compat\u00edveis com o gate HES: criar, persistir, reconciliar hoje/amanh\u00e3, consultar, adiar, ignorar e operar na UI Nuxt.",
+      "riskProtected": "Preservar REM-001..008 e REM-DST-001, sem scheduler, transporte, integra\u00e7\u00e3o autom\u00e1tica com glicemia ou infer\u00eancia de insulina.",
+      "validation": {
+        "execution": "Execu\u00e7\u00e3o manual local autorizada; HES n\u00e3o ser\u00e1 marcado VERIFIED.",
+        "strategy": "Vitest unit\u00e1rio e integra\u00e7\u00e3o, Playwright, typecheck, build e build isolada."
+      }
+    },
+    "state": "ASSISTED"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "shared/domain/foods/calculateCarbohydrates.ts"
+  ],
+  "appliedAt": "2026-11-04T13:38:00.140503+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "318d3d44-7f90-428e-90a5-a518c9af507d",
+    "reference": "user-request-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "3d3dae054195f2ff245cba15ca325a0e17141bc3ffa0eb73d835905a5174dfb6",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "shared/domain/foods/calculateCarbohydrates.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tia-bete-mvp/README.md",
+          "tests/unit/foods/calculateCarbohydrates.test.ts"
+        ],
+        "protectedBy": {
+          "risk": "TB-FOOD-001 carbohydrate calculation returns an incorrect total"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T13:37:54.507295+00:00",
+  "id": "318d3d44-7f90-428e-90a5-a518c9af507d",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T13:38:00.077695+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "shared/domain/foods/*.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

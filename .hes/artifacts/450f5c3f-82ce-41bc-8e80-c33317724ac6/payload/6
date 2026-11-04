@@ -1,0 +1,169 @@
+<script setup lang="ts">
+import { onMounted, reactive, ref } from 'vue'
+
+import { listGlucoseHistory } from '~~/shared/application/glucose/listGlucoseHistory'
+import { recordGlucoseReading } from '~~/shared/application/glucose/recordGlucoseReading'
+import type { GlucoseReading } from '~~/shared/domain/glucose/glucoseReading'
+import type { GlucoseReadingValidationCode, GlucoseReadingValidationErrors } from '~~/shared/domain/glucose/validateGlucoseReading'
+import { MemoryGlucoseReadingRepository } from '~~/shared/infrastructure/glucose/memoryGlucoseReadingRepository'
+
+const repository = new MemoryGlucoseReadingRepository()
+const showForm = ref(false)
+const errors = ref<Record<string, string>>({})
+const submitted = ref(false)
+const timeZone = ref('UTC')
+const history = ref<GlucoseReading[]>([])
+const form = reactive({ value: '', date: '', time: '', context: '' })
+
+const validationMessages: Record<GlucoseReadingValidationCode, string> = {
+  required: 'Informe este campo.',
+  invalid: 'Informe um valor válido.',
+  'invalid-time-zone': 'O fuso horário do navegador não é válido.',
+  'nonexistent-local-time': 'Este horário não existe no fuso atual.',
+  'ambiguous-local-time': 'Este horário é ambíguo no fuso atual.'
+}
+
+const setCurrentDateTime = () => {
+  const now = new Date()
+  form.date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  form.time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+}
+
+const toUiErrors = (domainErrors: GlucoseReadingValidationErrors) => Object.fromEntries(
+  Object.entries(domainErrors).map(([field, code]) => [field === 'localDateTime' ? 'time' : field, validationMessages[code]])
+)
+
+const formatOccurredAt = (reading: GlucoseReading) => new Intl.DateTimeFormat('pt-BR', {
+  dateStyle: 'short', timeStyle: 'short', timeZone: reading.timeZone
+}).format(new Date(reading.occurredAt))
+
+const contextLabels: Record<string, string> = {
+  fasting: 'Em jejum',
+  pre_meal: 'Antes da refeição',
+  post_meal: 'Após a refeição',
+  bedtime: 'Ao deitar',
+  other: 'Outro'
+}
+
+const openForm = () => {
+  showForm.value = true
+  submitted.value = false
+  errors.value = {}
+}
+
+const submit = () => {
+  const result = recordGlucoseReading(
+    { ...form, timeZone: timeZone.value, context: form.context || undefined },
+    repository,
+    { now: () => new Date().toISOString(), createId: () => crypto.randomUUID() }
+  )
+  submitted.value = true
+
+  if ('errors' in result) {
+    errors.value = toUiErrors(result.errors)
+    return
+  }
+
+  history.value = listGlucoseHistory(repository)
+  showForm.value = false
+}
+
+onMounted(() => {
+  timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+  setCurrentDateTime()
+})
+</script>
+
+<template>
+  <main id="hoje" class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">TIA-BETE</p>
+        <h1>Hoje</h1>
+      </div>
+      <StatusIndicator tone="warning">Sessão local</StatusIndicator>
+    </header>
+
+    <AppCard class="day-summary">
+      <p class="eyebrow">Resumo do dia</p>
+      <h2>Comece com um registro</h2>
+      <p>Esta demonstração não usa dados clínicos reais e não salva informações.</p>
+      <AppButton @click="openForm">Registrar glicemia</AppButton>
+    </AppCard>
+
+    <section class="content-grid" aria-label="Resumo da sessão">
+      <AppCard>
+        <p class="eyebrow">Último registro</p>
+        <template v-if="history[0]">
+          <h2>{{ history[0].glucoseMgDl }} mg/dL</h2>
+          <p>{{ formatOccurredAt(history[0]) }}<span v-if="history[0].context"> · {{ contextLabels[history[0].context] }}</span></p>
+          <StatusIndicator tone="warning">Temporário: será perdido ao recarregar.</StatusIndicator>
+        </template>
+        <template v-else>
+          <h2>Nenhum registro nesta sessão</h2>
+          <p>Use apenas dados de demonstração até existir armazenamento protegido.</p>
+        </template>
+      </AppCard>
+
+      <AppCard>
+        <p class="eyebrow">Próximo lembrete</p>
+        <h2>Nenhum lembrete agendado</h2>
+        <p>Lembretes serão desenvolvidos e testados localmente em outro incremento.</p>
+      </AppCard>
+    </section>
+
+    <AppCard v-if="history.length" class="history-card">
+      <p class="eyebrow">Histórico desta sessão</p>
+      <ol class="history-list">
+        <li v-for="reading in history" :key="reading.id">
+          <strong>{{ reading.glucoseMgDl }} mg/dL</strong>
+          <span>{{ formatOccurredAt(reading) }}</span>
+        </li>
+      </ol>
+    </AppCard>
+
+    <section v-if="showForm" class="form-panel" aria-labelledby="glucose-form-title">
+      <div class="form-panel__heading">
+        <div>
+          <p class="eyebrow">Registro temporário</p>
+          <h2 id="glucose-form-title">Registrar glicemia</h2>
+        </div>
+        <AppButton variant="secondary" @click="showForm = false">Cancelar</AppButton>
+      </div>
+
+      <StatusIndicator tone="warning">Use somente dados de demonstração. Nada será salvo nesta sessão.</StatusIndicator>
+
+      <form novalidate @submit.prevent="submit">
+        <AppInput
+          id="glucose-value"
+          v-model="form.value"
+          label="Valor"
+          type="number"
+          inputmode="decimal"
+          min="0"
+          placeholder="Ex.: 120"
+          :error="submitted ? errors.value : ''"
+          hint="Em mg/dL"
+        />
+        <div class="form-grid">
+          <AppInput id="glucose-date" v-model="form.date" label="Data" type="date" :error="submitted ? errors.date : ''" />
+          <AppInput id="glucose-time" v-model="form.time" label="Horário" type="time" :error="submitted ? errors.time : ''" />
+        </div>
+        <div class="app-field">
+          <label for="glucose-context">Contexto opcional</label>
+          <select id="glucose-context" v-model="form.context">
+            <option value="">Não informado</option>
+            <option value="fasting">Em jejum</option>
+            <option value="pre_meal">Antes da refeição</option>
+            <option value="post_meal">Após a refeição</option>
+            <option value="bedtime">Ao deitar</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+        <AppButton type="submit">Validar registro temporário</AppButton>
+      </form>
+    </section>
+  </main>
+
+  <AppBottomNavigation />
+</template>

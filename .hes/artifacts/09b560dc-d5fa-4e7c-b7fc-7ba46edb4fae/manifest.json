@@ -1,0 +1,58 @@
+{
+  "applied": [
+    "server/api/glucose/readings.post.ts"
+  ],
+  "appliedAt": "2026-11-04T14:59:47.760377+00:00",
+  "approval": {
+    "operations": [
+      "MODIFY"
+    ],
+    "planId": "09b560dc-d5fa-4e7c-b7fc-7ba46edb4fae",
+    "reference": "user-approved-glu-rec-001-h3-compatibility-fix-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "d11407ea4256f1e78893149995160f8bb5840b0d146c6c10d4b40808905b9edb",
+      "contentSha256": "9ea80df73553e47d705b74d3d7e02c67bfcc899b8eb213ab347363e1591e8b8e",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "server/api/glucose/readings.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "server/api/glucose/readings.post.ts:25-26",
+          "Nuxt dev log: h3 statusMessage warning"
+        ],
+        "protectedBy": {
+          "risk": "API validation and persistence failures must retain explicit messages without future h3 sanitization"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    }
+  ],
+  "createdAt": "2026-11-04T14:59:41.141726+00:00",
+  "id": "09b560dc-d5fa-4e7c-b7fc-7ba46edb4fae",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:59:47.709650+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "MODIFY"
+    ],
+    "paths": [
+      "server/api/glucose/readings.post.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

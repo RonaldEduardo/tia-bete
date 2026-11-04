@@ -1,0 +1,78 @@
+import { describe, expect, it } from 'vitest'
+
+import { createReminder, validateReminder } from '../../../shared/domain/reminders/reminder'
+import { advanceOccurrence, completeCompatibleGlucoseOccurrence, completeOccurrence, generateOccurrences, ignoreOccurrence, snoozeOccurrence } from '../../../shared/domain/reminders/reminderOccurrence'
+
+const create = (overrides: Partial<Parameters<typeof createReminder>[0]> = {}) => {
+  const result = createReminder({ type: 'glucose-reading', localTime: '08:30', daysOfWeek: [3], timeZone: 'America/Sao_Paulo', ...overrides }, {
+    createId: () => 'reminder-1', now: () => '2026-11-01T00:00:00.000Z'
+  })
+  if ('errors' in result) throw new Error('invalid fixture')
+  return result.reminder
+}
+
+const reading = (occurredAt: string) => ({ id: 'reading-1', glucoseMgDl: 121, occurredAt, createdAt: '2026-11-04T12:00:00.000Z', timeZone: 'America/Sao_Paulo' })
+
+describe('REM-A domain', () => {
+  it('validates configuration and applies the approved snooze defaults', () => {
+    expect(validateReminder({ type: 'unknown', localTime: '25:00', daysOfWeek: [], timeZone: 'Nowhere/Invalid' })).toEqual({
+      type: 'invalid', localTime: 'invalid', daysOfWeek: 'required', timeZone: 'invalid-time-zone'
+    })
+    expect(create().schedule).toMatchObject({ snoozeMinutes: 10, maxSnoozes: 2, daysOfWeek: [3] })
+  })
+
+  it('generates deterministic, idempotent occurrences for valid local schedules', () => {
+    const reminder = create()
+    const first = generateOccurrences(reminder, ['2026-11-04'], '2026-11-04T10:00:00.000Z')
+    const second = generateOccurrences(reminder, ['2026-11-04', '2026-11-04'], '2026-11-04T10:00:00.000Z')
+
+    expect(first).toEqual(second)
+    expect(first[0]).toMatchObject({
+      id: 'reminder-1:1:2026-11-04:08:30', scheduledFor: '2026-11-04T11:30:00.000Z', nextActionAt: '2026-11-04T11:30:00.000Z', status: 'scheduled'
+    })
+  })
+
+  it('records DST-invalid local slots as skipped and continues with future valid slots', () => {
+    const nonexistent = create({ localTime: '02:30', daysOfWeek: [0], timeZone: 'America/New_York' })
+    const ambiguous = create({ localTime: '01:30', daysOfWeek: [0], timeZone: 'America/New_York' })
+
+    expect(generateOccurrences(nonexistent, ['2026-03-08', '2026-03-15'], '2026-03-01T00:00:00.000Z').map(({ status, skipReason, scheduledFor }) => ({ status, skipReason, scheduledFor }))).toEqual([
+      { status: 'skipped', skipReason: 'nonexistent-local-time', scheduledFor: null },
+      { status: 'scheduled', skipReason: undefined, scheduledFor: '2026-03-15T06:30:00.000Z' }
+    ])
+    expect(generateOccurrences(ambiguous, ['2026-11-01', '2026-11-08'], '2026-10-01T00:00:00.000Z').map(({ status, skipReason }) => ({ status, skipReason }))).toEqual([
+      { status: 'skipped', skipReason: 'ambiguous-local-time' },
+      { status: 'scheduled', skipReason: undefined }
+    ])
+  })
+
+  it('preserves scheduledFor while snoozing and respects the configured limit', () => {
+    const occurrence = generateOccurrences(create(), ['2026-11-04'], '2026-11-04T12:00:00.000Z')[0]!
+    expect(occurrence.status).toBe('due')
+    const first = snoozeOccurrence(occurrence, '2026-11-04T12:00:00.000Z', 10, 2)
+    if ('error' in first) throw new Error(first.error)
+    expect(first.occurrence).toMatchObject({ status: 'snoozed', scheduledFor: '2026-11-04T11:30:00.000Z', nextActionAt: '2026-11-04T12:10:00.000Z', snoozeCount: 1 })
+    const second = snoozeOccurrence(advanceOccurrence(first.occurrence, '2026-11-04T12:10:00.000Z'), '2026-11-04T12:10:00.000Z', 10, 2)
+    if ('error' in second) throw new Error(second.error)
+    expect(snoozeOccurrence(advanceOccurrence(second.occurrence, '2026-11-04T12:20:00.000Z'), '2026-11-04T12:20:00.000Z', 10, 2)).toEqual({ error: 'limit-reached' })
+  })
+
+  it('requires explicit ignore, expires unconfirmed occurrences, and prevents terminal transitions', () => {
+    const due = generateOccurrences(create(), ['2026-11-04'], '2026-11-04T12:00:00.000Z')[0]!
+    const ignored = ignoreOccurrence(due, '2026-11-04T12:00:00.000Z')
+    if ('error' in ignored) throw new Error(ignored.error)
+    expect(completeOccurrence(ignored.occurrence, '2026-11-04T12:00:00.000Z')).toEqual({ error: 'not-due' })
+    expect(advanceOccurrence(due, '2026-11-05T11:30:00.000Z')).toMatchObject({ status: 'expired', nextActionAt: null })
+  })
+
+  it('completes only the closest eligible glucose occurrence using occurredAt evidence', () => {
+    const reminder = create()
+    const [first] = generateOccurrences(reminder, ['2026-11-04'], '2026-11-04T12:00:00.000Z')
+    const second = { ...first!, id: 'reminder-1:1:2026-11-04:08:40', scheduledFor: '2026-11-04T11:40:00.000Z', nextActionAt: '2026-11-04T11:40:00.000Z' }
+    const matched = completeCompatibleGlucoseOccurrence([first!, second], reminder, reading('2026-11-04T11:30:00.000Z'), '2026-11-04T12:00:00.000Z')
+
+    expect(matched).toMatchObject({ id: second.id, status: 'completed', completionEvidence: { kind: 'glucose-reading', glucoseReadingId: 'reading-1' } })
+    expect(completeCompatibleGlucoseOccurrence([{ ...first!, status: 'ignored', nextActionAt: null }], reminder, reading('2026-11-04T11:30:00.000Z'), '2026-11-04T12:00:00.000Z')).toBeUndefined()
+    expect(completeCompatibleGlucoseOccurrence([first!], { ...reminder, type: 'insulin' }, reading('2026-11-04T11:30:00.000Z'), '2026-11-04T12:00:00.000Z')).toBeUndefined()
+  })
+})

@@ -1,0 +1,104 @@
+{
+  "applied": [
+    "harness/harness-design.md",
+    "harness/traceability-matrix.md",
+    "tests/unit/foods/calculateCarbohydrates.test.ts"
+  ],
+  "appliedAt": "2026-11-04T13:37:24.961521+00:00",
+  "approval": {
+    "operations": [
+      "CREATE"
+    ],
+    "planId": "4eb6d0e3-80c4-41d3-a64c-407c56b5f62b",
+    "reference": "user-request-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "02b8d26c18f590bf99b91e282e48247bba79ddaf12ab947e23614be4f3265fcd",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "harness/harness-design.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tia-bete-mvp/README.md",
+          "package.json",
+          "finding:NO_TESTS_DETECTED:"
+        ],
+        "protectedBy": {
+          "risk": "TB-FOOD-001 carbohydrate total is incorrect or untested"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "86e4b73291c077f0334b64b5ad88f49e4f25e5b0a99071038fe3c45282e0ecc4",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "harness/traceability-matrix.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tia-bete-mvp/README.md",
+          "package.json",
+          "finding:NO_TESTS_DETECTED:"
+        ],
+        "protectedBy": {
+          "risk": "TB-FOOD-001 carbohydrate total is incorrect or untested"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "047d61e6791ff46a4d67782130533c9073f88fd52fee354905c5aa95177ed291",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/unit/foods/calculateCarbohydrates.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "tia-bete-mvp/README.md",
+          "package.json",
+          "finding:NO_TESTS_DETECTED:"
+        ],
+        "protectedBy": {
+          "risk": "TB-FOOD-001 carbohydrate total is incorrect or untested"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    }
+  ],
+  "createdAt": "2026-11-04T13:37:09.022293+00:00",
+  "id": "4eb6d0e3-80c4-41d3-a64c-407c56b5f62b",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T13:37:20.294112+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE"
+    ],
+    "operations": [
+      "CREATE"
+    ],
+    "paths": [
+      "harness/*.md",
+      "tests/unit/**/*.ts"
+    ]
+  },
+  "state": "APPLIED"
+}

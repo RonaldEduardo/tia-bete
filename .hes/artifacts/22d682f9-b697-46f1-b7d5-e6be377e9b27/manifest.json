@@ -1,0 +1,439 @@
+{
+  "applied": [
+    "shared/application/glucose/glucoseReadingRepository.ts",
+    "shared/application/glucose/recordGlucoseReading.ts",
+    "shared/application/glucose/listGlucoseHistory.ts",
+    "shared/infrastructure/glucose/memoryGlucoseReadingRepository.ts",
+    "server/infrastructure/glucose/migrations/001_create_glucose_readings.sql",
+    "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+    "server/utils/glucoseRepository.ts",
+    "server/api/glucose/readings.get.ts",
+    "server/api/glucose/readings.post.ts",
+    "app/app.vue",
+    "tests/unit/glucose/glucoseUseCases.test.ts",
+    "tests/integration/glucose/sqliteGlucoseReadingRepository.test.ts",
+    "contracts/glucose-recording.md",
+    "harness/traceability-matrix.md",
+    ".gitignore",
+    "package.json"
+  ],
+  "appliedAt": "2026-11-04T14:52:37.924625+00:00",
+  "approval": {
+    "operations": [
+      "CREATE",
+      "MODIFY"
+    ],
+    "planId": "22d682f9-b697-46f1-b7d5-e6be377e9b27",
+    "reference": "user-approved-glu-rec-001-revision-2-2026-11-04",
+    "state": "APPROVED"
+  },
+  "artifacts": [
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "e3af3dbb212e76b0129d670cb6b7acfe623840d4b6963741c7372a60016f93ce",
+      "contentSha256": "7dbb01d2d4b9dd53a857e6f23b31c216e55df66ab60d9a896eef6554678212fd",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/application/glucose/glucoseReadingRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/0"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "158f13a52fba815c515db9b9ef050096f8bfb94799ba57a487b1969817536752",
+      "contentSha256": "1cad1ada5163d3ec0d309ba14305145c0f1efe9f4527d031056383932f88fe97",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/application/glucose/recordGlucoseReading.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/1"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "0aec238d452d95be58932898db2c783674ffaa44b93926e96e103c69e479c8e4",
+      "contentSha256": "6164d190a169c72727bb61b552bb46482f66780fb2b272014af6d622d859265c",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/application/glucose/listGlucoseHistory.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/2"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "976da75e4fa5091dbd2ddf9d808f6f1007fac0bcece6b06f84dd6f21e68c0546",
+      "contentSha256": "1ee408dad223aca91ca397f4e8c5c190abcfb2d12fed344e276934e2ce363610",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "shared/infrastructure/glucose/memoryGlucoseReadingRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/3"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "b1a750b38f7eb8e37cf34272fe726d69dfcbb37cf3207a9fd58b41b52d952c37",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/glucose/migrations/001_create_glucose_readings.sql",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/4"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "45353dc9ac6236edde19c82092e6b4e2612608ad37b6c0df3030433a5c115212",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/5"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "4b1e939b295b8df6b39ad634c1ec6640319a587b0f3b1c6eaabe535325ee769f",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/utils/glucoseRepository.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/6"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "2361290fcd5c321131246ed097c15ce8570e4d7b00a7d227c43815288426a9c8",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/glucose/readings.get.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/7"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "d11407ea4256f1e78893149995160f8bb5840b0d146c6c10d4b40808905b9edb",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "server/api/glucose/readings.post.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/8"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "82e59c18c1720860017f936e6ac30f97030174bf3f655b80f4207d01037de199",
+      "contentSha256": "07fcdc6348f9712f43ac88e0ab86ab200cf55441cc0c848502aaf695a7cf58aa",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "app/app.vue",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/9"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "23a00f997e36d2e773dcdb78f417aff10bd788e0a93972b72f420d403363f57b",
+      "contentSha256": "3457f01e0dce9f03d09d427e5c77207f47b0d3bf6c27fa7566608c8b03b18281",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "tests/unit/glucose/glucoseUseCases.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/10"
+    },
+    {
+      "autonomy": "CREATION_WITHOUT_OVERWRITE",
+      "baselineSha256": null,
+      "contentSha256": "cb1c61991e1cee08e26607ea2c1d00f7812c5ff795ead6329554be49072278fb",
+      "dependsOn": [],
+      "operation": "CREATE",
+      "path": "tests/integration/glucose/sqliteGlucoseReadingRepository.test.ts",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/11"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "5edc1ec1b3b2861311f48b251633fda154811767cd2ad7b9e3965ce95cd32993",
+      "contentSha256": "40daf20a20cb3e5f4b56de25fbf93d82abce786eec2e00267e7ef1da00303682",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "contracts/glucose-recording.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/12"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "0123f8b8850a0fcc27d233ab254d22ca2a2067dd39b7be67663a3f0fecb01a72",
+      "contentSha256": "b6fb07cdedf6f6000c968efc774a2937e40e1d34fa865d0db0e036b88c09e2dc",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "harness/traceability-matrix.md",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/13"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "730800e1bac6230e6fdd6476a28a38f95df38c798eb413b586e6bf6e34267c67",
+      "contentSha256": "a94d7fafcb7b8737bf0183ba352de6891806c561de2bda38d4e1b371be6986b9",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": ".gitignore",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/14"
+    },
+    {
+      "autonomy": "HARNESS_MODIFICATION",
+      "baselineSha256": "f35b687e546ba44b0965e61e229b6ec01063b51d890c60cafa22455383d99540",
+      "contentSha256": "f9f4206c72975986fd8c71d216dcdeb9c83875fb813ee00aaae2dce834476c9d",
+      "dependsOn": [],
+      "operation": "MODIFY",
+      "path": "package.json",
+      "provenance": {
+        "agent": "opencode/gpt-5.6-terra",
+        "evidenceReferences": [
+          "contracts/glucose-recording.md",
+          "shared/application/glucose/glucoseReadingRepository.ts",
+          "shared/domain/glucose/glucoseReading.ts",
+          "tests/unit/glucose/glucoseUseCases.test.ts",
+          "node:sqlite probe on Node v24.22.2"
+        ],
+        "protectedBy": {
+          "risk": "local persistence must preserve approved glucose semantics and never falsely confirm a failed write"
+        },
+        "rollback": null
+      },
+      "staged": "payload/15"
+    }
+  ],
+  "createdAt": "2026-11-04T14:52:31.448438+00:00",
+  "id": "22d682f9-b697-46f1-b7d5-e6be377e9b27",
+  "operation": "ARTIFACTS",
+  "projectId": "1c4bb5bc-00e1-4cf1-8b4e-1d7c5c3e0202",
+  "review": {
+    "at": "2026-11-04T14:52:37.862891+00:00",
+    "state": "REVIEWED"
+  },
+  "schemaVersion": "1",
+  "scope": {
+    "classes": [
+      "STAGING",
+      "CREATION_WITHOUT_OVERWRITE",
+      "HARNESS_MODIFICATION"
+    ],
+    "operations": [
+      "CREATE",
+      "MODIFY"
+    ],
+    "paths": [
+      "shared/application/glucose/glucoseReadingRepository.ts",
+      "shared/application/glucose/recordGlucoseReading.ts",
+      "shared/application/glucose/listGlucoseHistory.ts",
+      "shared/infrastructure/glucose/memoryGlucoseReadingRepository.ts",
+      "server/infrastructure/glucose/migrations/001_create_glucose_readings.sql",
+      "server/infrastructure/glucose/sqliteGlucoseReadingRepository.ts",
+      "server/utils/glucoseRepository.ts",
+      "server/api/glucose/readings.get.ts",
+      "server/api/glucose/readings.post.ts",
+      "app/app.vue",
+      "tests/unit/glucose/glucoseUseCases.test.ts",
+      "tests/integration/glucose/sqliteGlucoseReadingRepository.test.ts",
+      "contracts/glucose-recording.md",
+      "harness/traceability-matrix.md",
+      ".gitignore",
+      "package.json"
+    ]
+  },
+  "state": "APPLIED"
+}
